@@ -1,4 +1,3 @@
-from config.dbconfig import mysql_config
 import MySQLdb
 
 class UserDAO:

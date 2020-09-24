@@ -13,10 +13,6 @@ CORS(app)
 def greeting():
     return 'Hello, this is the Matchware App!'
 
-
-
-
-
 @app.route('/user', methods=['GET', 'POST'])
 def users():
     if request.method == 'POST':
