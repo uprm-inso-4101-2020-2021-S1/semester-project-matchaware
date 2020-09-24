@@ -1,5 +1,5 @@
 from flask import Flask, request
-from handler import UserHandler
+from handler.UsersHandler import UsersHandler
 
 from flask_cors import CORS
 
@@ -17,13 +17,13 @@ def greeting():
 def users():
     if request.method == 'POST':
         print("REQUEST: ", request.json)
-        return UserHandler.UserHandler().insertUserJson(request.json)
+        return UsersHandler().insertUserJson(request.json)
     else:
         if not request.args:
 
-            return UserHandler().getAllUsers()
+            return UsersHandler().getAllUsers()
         else:
-            return UserHandler().serachUser(request.args)
+            return UsersHandler().serachUser(request.args)
 
 
 
