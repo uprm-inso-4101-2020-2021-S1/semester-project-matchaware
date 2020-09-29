@@ -5,6 +5,8 @@ import Header from './components/Header'
 import Profile from './components/Pages/Profile'
 import Following from './components/Pages/Following'
 import Messages from './components/Pages/Messages'
+import Doge from './components/doge.jpg'
+import './App.css'
 
 
 
@@ -27,11 +29,13 @@ import Messages from './components/Pages/Messages'
               <Header />
               <Route exact path="/" render={props =>(
                 <React.Fragment>
-                  <h1>
-                    There will be pictures here.
-                  </h1>
+                 <h1>
+                   Hello
+                 </h1>
+                 <img src={Doge} alt="He who is doge"/>
                 </React.Fragment>
               )} />
+
               <Route path="/profile" component={Profile} />
               <Route path="/following" component={Following} />
               <Route path="/messages" component={Messages} />
