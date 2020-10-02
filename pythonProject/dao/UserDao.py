@@ -1,10 +1,13 @@
 import MySQLdb
+from config import dbconfig
+
 
 class UserDAO:
-    #fix this url crap tonight
+    # fix this url crap tonight
     def __init__(self):
-        connection_url = "dbname=%s user=%s password=%s host=127.0.0.1" % (pg_config['dbname'], pg_config['user'], pg_config['passwd'])
-        self.conn = MySQLdb.connect(connection_url)
+        connection_url = MySQLdb.connect(host="localhost", user='root', passwd='root', db='BeyondHorizonsDB')
+        # connection_url = (host="localhost", user='Argent', passwd='ArgentSable776', db='MatchaWareDB')
+        self.conn = connection_url
 
     def getAllUsers(self):
         cursor = self.conn.cursor()
@@ -30,8 +33,6 @@ class UserDAO:
         for row in cursor:
             result.append(row)
         return result
-
-
 
     def insert(self, accounttypenumber, firstname, lastname, phone, email, gender, status):
         cursor = self.conn.cursor()

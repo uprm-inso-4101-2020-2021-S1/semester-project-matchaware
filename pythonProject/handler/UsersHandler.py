@@ -28,7 +28,7 @@ class UsersHandler:
         return result
 
     def getAllUsers(self):
-        dao = UserDao()
+        dao = UserDao.UserDAO()
         users_list = dao.getAllUsers()
         result_list = []
         for row in users_list:
