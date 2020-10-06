@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router,Route} from 'react-router-dom';
 import Header from './components/Header'
 import Profile from './components/Pages/Profile'
@@ -6,16 +6,13 @@ import Following from './components/Pages/Following'
 import Messages from './components/Pages/Messages'
 import Doge from './components/doge.jpg'
 import './App.css'
-import Container from 'react-bootstrap/container'
-import {Button, Card} from 'react-bootstrap'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
-import Form from 'react-bootstrap/Form'
-import FormControl from 'react-bootstrap/FormControl'
+import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
+import LoginAndSignup from './components/Pages/Login'
+import SignUp from './components/Pages/SignUp';
 
 
-
-    
 
     export default function App(){
         return (
@@ -24,7 +21,7 @@ import FormControl from 'react-bootstrap/FormControl'
               <Header />
               <Route exact path="/" render={props =>(
                 <React.Fragment>
-                  <Container className="p-5">
+                  <Container fluid className="p-5">
                  <Card border="success" className="text-center" style={{ width: '40rem'}}>
                    <Card.Header>ICOM</Card.Header>
                    <Card.Img varitant="top"src={Doge}/>
@@ -45,9 +42,13 @@ import FormControl from 'react-bootstrap/FormControl'
               <Route path="/profile" component={Profile} />
               <Route path="/following" component={Following} />
               <Route path="/messages" component={Messages} />
+
+              {/*  Delete the following two paths once testiing is complete or the user states have been created. */}
+              <Route path="/login" component={LoginAndSignup} />
+              <Route path="/signup" component={SignUp}/>
+              {/* Read previous comment */}
             </div>
           </Router>
-          
         )
       }
     

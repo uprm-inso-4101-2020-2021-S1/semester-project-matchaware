@@ -8,7 +8,6 @@ import Card from 'react-bootstrap/Card'
 
 export default function LoginAndSignup() {
     return (
-        <React.Fragment>
         <Container className='p-5'>
             <Card className="text-center p-4">
                 <Card.Title>
@@ -16,15 +15,15 @@ export default function LoginAndSignup() {
                     Welcome Back, Colegial!
                     </h1>
                 </Card.Title>
+                
                 <Form>
+
                     <Form.Group
                         controlId="formEmail"> 
-                        <Form.Label>Username: </Form.Label>
+                        <Form.Label>Email Address</Form.Label>
                         <Form.Control type="email" placeholder="Username or email"/>
-                        <Form.Text className="text-muted"> 
-                            Your email addresss is in good hands.
-                        </Form.Text>
                     </Form.Group>
+
                     <Form.Group>
                         <Form.Label>
                             Password:
@@ -34,10 +33,11 @@ export default function LoginAndSignup() {
                             Please use an 8 character long password.
                         </Form.Text>
                     </Form.Group>
+
                 </Form>
+                
                 <Button variant="success" >Login</Button>
             </Card>
         </Container>
-        </React.Fragment>
     )
 }

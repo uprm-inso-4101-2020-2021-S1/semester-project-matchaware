@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Container from 'react-bootstrap/container'
-import {Button, Card} from 'react-bootstrap'
+import Button from 'react-bootstrap/Button'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Form from 'react-bootstrap/Form'
@@ -8,7 +8,7 @@ import FormControl from 'react-bootstrap/FormControl'
 
 function Header (){
     return(
-        <Container className='p-5'>
+        <Container fluid>
             <Navbar bg="light" expand="lg">
               <Navbar.Brand href="#home">MachaWare</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -18,6 +18,16 @@ function Header (){
               <Nav.Link href="/profile">Profile</Nav.Link>
               <Nav.Link href="/following">Following</Nav.Link>
               <Nav.Link href="/messages">Messages</Nav.Link>
+              
+              {/* 
+              Solely for testing purposes delete once initial testing is done or when states for the home page are
+              created
+               */}
+              <Nav.Link href="/login">Login</Nav.Link>
+              <Nav.Link href="/signup">Signup</Nav.Link>
+              {/* 
+              Read previous comment
+              */}
              </Nav>
             <Form inline>
               <FormControl type="text" placeholder="Search" className="mr-sm-2" />
