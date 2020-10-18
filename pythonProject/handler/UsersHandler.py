@@ -37,7 +37,7 @@ class UsersHandler:
         return jsonify(Users=result_list)
 
     def getUserById(self, UserID):
-        dao = UserDao()
+        dao = UserDao.UserDAO()
         row = dao.getUserById(UserID)
         if not row:
             return jsonify(Error = "User Not Found"), 404
@@ -48,7 +48,7 @@ class UsersHandler:
 
     def insertUser(self, form):
         print("form: ", form)
-        if len(form) != 9:
+        if len(form) != 7:
             return jsonify(Error = "Malformed post request"), 400
         else:
             accounttypenumber = form['AccountTypeNumber']
@@ -59,7 +59,7 @@ class UsersHandler:
             gender = form['Gender']
             status = form['Status']
             if accounttypenumber and firstname and lastname and phone and email and gender and status:
-                dao = UserDao()
+                dao = UserDao.UserDAO()
                 userid = dao.insert(accounttypenumber, firstname, lastname, phone, email, gender, status)
                 result = self.build_users_attributes(userid, accounttypenumber, firstname, lastname, phone, email, gender, status)
                 return jsonify(Users=result), 201
@@ -75,7 +75,7 @@ class UsersHandler:
         gender = json['Gender']
         status = json['Status']
         if accounttypenumber and firstname and lastname and phone and email and gender and status:
-            dao = UserDao()
+            dao = UserDao.UserDAO()
             userid = dao.insert(accounttypenumber, firstname, lastname, phone, email, gender, status)
             result = self.build_users_attributes(userid, accounttypenumber, firstname, lastname, phone, email, gender, status)
             return jsonify(Users=result), 201
@@ -83,7 +83,7 @@ class UsersHandler:
             return jsonify(Error="Unexpected attributes in post request"), 400
 
     def deleteUser(self, userid):
-        dao = UserDao()
+        dao = UserDao.UserDAO()
         if not dao.getUserById(userid):
             return jsonify(Error = "User not found."), 404
         else:
@@ -91,11 +91,11 @@ class UsersHandler:
             return jsonify(DeleteStatus = "OK"), 200
 
     def updateUser(self, userid, form):
-        dao = UserDao()
+        dao = UserDao.UserDAO()
         if not dao.getUserById(userid):
             return jsonify(Error = "User not found."), 404
         else:
-            if len(form) != 4:
+            if len(form) != 7:
                 return jsonify(Error="Malformed update request"), 400
             else:
                 accounttypenumber = form['AccountTypeNumber']
@@ -105,16 +105,15 @@ class UsersHandler:
                 email = form['Email']
                 gender = form['Gender']
                 status = form['Status']
-                gender = form['Gender']
                 if accounttypenumber and firstname and lastname and phone and email and gender and status:
-                    dao.update(accounttypenumber, firstname, lastname, phone, email, gender, status)
+                    dao.update(accounttypenumber, firstname, lastname, phone, email, gender, status,)
                     result = self.build_users_attributes(userid, accounttypenumber, firstname, lastname, phone, email, gender, status)
                     return jsonify(Users=result), 200
                 else:
                     return jsonify(Error="Unexpected attributes in update request"), 400
 
     def updateUserJson(self, userid, json):
-        dao = UserDao()
+        dao = UserDao.UserDAO()
         if not dao.getUserById(userid):
             return jsonify(Error="Admin not found."), 404
         else:

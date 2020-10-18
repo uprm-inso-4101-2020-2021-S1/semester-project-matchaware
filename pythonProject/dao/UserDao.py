@@ -51,7 +51,7 @@ class UserDAO:
 
     def update(self, UserID, accounttypenumber, firstname, lastname, phone, email, gender, status):
         cursor = self.conn.cursor()
-        query = "update users set username = %s, password = %s, email = %s, cardid = %s, ulocation = %s, firstname = %s, lastname = %s, dateofbirth = %s, gender = %s where userid = %s;"
+        query = "update users set accounttypenumber = %s, firstname = %s, lastname = %s, phone = %s, email = %s, gender = %s, status = %s where userid = %s;"
         cursor.execute(query, (accounttypenumber, firstname, lastname, phone, email, gender, status, UserID,))
         self.conn.commit()
         return UserID

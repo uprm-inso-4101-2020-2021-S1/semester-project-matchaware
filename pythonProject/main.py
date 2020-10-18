@@ -1,5 +1,9 @@
 from flask import Flask, request
 from handler.UsersHandler import UsersHandler
+from handler.ProjectHandler import ProjectHandler
+from handler.PostHandler import PostHandler
+from handler.CredentialHandler import CredentialHandler
+from handler.MemberHandler import MemberHandler
 
 from flask_cors import CORS
 
@@ -13,6 +17,7 @@ CORS(app)
 def greeting():
     return 'Hello, this is the Matchware App!'
 
+
 @app.route('/user', methods=['GET', 'POST'])
 def users():
     if request.method == 'POST':
@@ -20,11 +25,47 @@ def users():
         return UsersHandler().insertUserJson(request.json)
     else:
         if not request.args:
-
             return UsersHandler().getAllUsers()
-        else:
-            return UsersHandler().serachUser(request.args)
 
+
+@app.route('/project', methods=['GET', 'POST'])
+def project():
+    if request.method == 'POST':
+        print("REQUEST: ", request.json)
+        return ProjectHandler().insertProjectJson(request.json)
+    else:
+        if not request.args:
+            return ProjectHandler().getAllProjects()
+
+
+@app.route('/post', methods=['GET', 'POST'])
+def post():
+    if request.method == 'POST':
+        print("REQUEST: ", request.json)
+        return PostHandler().insertPostJson(request.json)
+    else:
+        if not request.args:
+            return PostHandler().getAllPosts()
+
+
+@app.route('/members', methods=['GET', 'POST'])
+def members():
+    if request.method == 'POST':
+        print("REQUEST: ", request.json)
+        return MemberHandler().insertMemberJson(request.json)
+    else:
+        if not request.args:
+            return MemberHandler().getAllMembers()
+
+
+@app.route('/credentials', methods=['GET', 'POST'])
+def credentials():
+    if request.method == 'POST':
+        print("REQUEST: ", request.json)
+        return CredentialHandler().insertCredentialJson(request.json)
+    else:
+        if not request.args:
+            return CredentialHandler().getAllCredentials()
 
 
 if __name__ == '__main__':
