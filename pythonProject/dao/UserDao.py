@@ -5,13 +5,13 @@ from config import dbconfig
 class UserDAO:
     # fix this url crap tonight
     def __init__(self):
-        connection_url = MySQLdb.connect(host="localhost", user='root', passwd='root', db='BeyondHorizonsDB')
+        connection_url = MySQLdb.connect(host='24.54.205.36', user='RemoteMatcha', passwd='RemoteMatcha', db='BeyondHorizonsDB',port = 6606)
         # connection_url = (host="localhost", user='Argent', passwd='ArgentSable776', db='MatchaWareDB')
         self.conn = connection_url
 
     def getAllUsers(self):
         cursor = self.conn.cursor()
-        query = "select * from Users;"
+        query = "select * from users;"
         cursor.execute(query)
         result = []
         for row in cursor:
