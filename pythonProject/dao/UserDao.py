@@ -34,11 +34,13 @@ class UserDAO:
             result.append(row)
         return result
 
-    def insert(self, accounttypenumber, firstname, lastname, phone, email, gender, status):
+    def insert(self, accounttypenumber, firstname, lastname, uphone, uemail, umajor):
         cursor = self.conn.cursor()
-        query = "insert into Users( accounttypenumber, firstname, lastname, phone, email, gender, status) values (%s, %s, %s, %s, %s, %s, %s) returning userid;"
-        cursor.execute(query, (accounttypenumber, firstname, lastname, phone, email, gender, status,))
-        userid = cursor.fetchone()[0]
+        query = "insert into users( accounttypenumber, firstname, lastname, uphone, uemail,umajor) values (%s, %s, %s, %s, %s, %s) ;"
+        cursor.execute(query, (accounttypenumber, firstname, lastname, uphone, uemail,umajor,))
+        query = "SELECT LAST_INSERT_ID();"
+        cursor.execute(query)
+        userid = cursor.fetchall()[0]
         self.conn.commit()
         return userid
 
@@ -51,7 +53,7 @@ class UserDAO:
 
     def update(self, UserID, accounttypenumber, firstname, lastname, phone, email, gender, status):
         cursor = self.conn.cursor()
-        query = "update users set accounttypenumber = %s, firstname = %s, lastname = %s, phone = %s, email = %s, gender = %s, status = %s where userid = %s;"
+        query = "update users set account  typenumber = %s, firstname = %s, lastname = %s, phone = %s, email = %s, gender = %s, status = %s where userid = %s;"
         cursor.execute(query, (accounttypenumber, firstname, lastname, phone, email, gender, status, UserID,))
         self.conn.commit()
         return UserID

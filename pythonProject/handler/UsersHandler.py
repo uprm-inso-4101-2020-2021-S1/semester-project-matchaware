@@ -11,11 +11,11 @@ class UsersHandler:
         result['LastName'] = row[3]
         result['Phone'] = row[4]
         result['Email'] = row[5]
-        result['Gender'] = row[6]
+        result['Major'] = row[6]
         result['Status'] = row[7]
         return result
 
-    def build_users_attributes(self, UserID, AccountTypeNumber,  FirstName, LastName, Phone, Email, Gender, Status):
+    def build_users_attributes(self, UserID, AccountTypeNumber,  FirstName, LastName, Phone, Email, umajor):
         result = {}
         result['UserID'] = UserID
         result['AccountTypeNumber'] = AccountTypeNumber
@@ -23,8 +23,7 @@ class UsersHandler:
         result['LastName'] = LastName
         result['Phone'] = Phone
         result['Email'] = Email
-        result['Gender'] = Gender
-        result['Status'] = Status
+        result['major'] = umajor
         return result
 
     def getAllUsers(self):
@@ -46,41 +45,43 @@ class UsersHandler:
             return jsonify(Users = users)
 
 
-    def insertUser(self, form):
-        print("form: ", form)
-        if len(form) != 7:
-            return jsonify(Error = "Malformed post request"), 400
+    # def insertUser(self, form):
+    #     print("form: ", form)
+    #     if len(form) != 6:
+    #         return jsonify(Error = "Malformed post request"), 400
+    #     else:
+    #         accounttypenumber = form['AccountTypeNumber']
+    #         firstname = form['FirstName']
+    #         lastname = form['LastName']
+    #         phone = form['Phone']
+    #         email = form['Email']
+    #         umajor = form['umajor']
+    #
+    #         if accounttypenumber and firstname and lastname and phone and email and umajor:
+    #             dao = UserDao.UserDAO()
+    #             userid = dao.insert(accounttypenumber, firstname, lastname, phone, email, umajor)
+    #             result = self.build_users_attributes(userid, accounttypenumber, firstname, lastname, phone, email, umajor)
+    #             return jsonify(Users=result), 201
+    #         else:
+    #             return jsonify(Error="Unexpected attributes in post request"), 400
+
+    def insertUserJson(self, form):
+        if len(form) != 6:
+            return jsonify(Error="Malformed post request"), 400
         else:
             accounttypenumber = form['AccountTypeNumber']
             firstname = form['FirstName']
             lastname = form['LastName']
             phone = form['Phone']
             email = form['Email']
-            gender = form['Gender']
-            status = form['Status']
-            if accounttypenumber and firstname and lastname and phone and email and gender and status:
-                dao = UserDao.UserDAO()
-                userid = dao.insert(accounttypenumber, firstname, lastname, phone, email, gender, status)
-                result = self.build_users_attributes(userid, accounttypenumber, firstname, lastname, phone, email, gender, status)
-                return jsonify(Users=result), 201
-            else:
-                return jsonify(Error="Unexpected attributes in post request"), 400
+            umajor = form['Major']
 
-    def insertUserJson(self, json):
-        accounttypenumber = json['AccountTypeNumber']
-        firstname = json['FirstName']
-        lastname = json['LastName']
-        phone = json['Phone']
-        email = json['Email']
-        gender = json['Gender']
-        status = json['Status']
-        if accounttypenumber and firstname and lastname and phone and email and gender and status:
-            dao = UserDao.UserDAO()
-            userid = dao.insert(accounttypenumber, firstname, lastname, phone, email, gender, status)
-            result = self.build_users_attributes(userid, accounttypenumber, firstname, lastname, phone, email, gender, status)
-            return jsonify(Users=result), 201
-        else:
-            return jsonify(Error="Unexpected attributes in post request"), 400
+            if accounttypenumber and firstname and lastname and phone and email and umajor:
+                dao = UserDao.UserDAO()
+                userid = dao.insert(accounttypenumber, firstname, lastname, phone, email, umajor)
+                result = self.build_users_attributes(userid, accounttypenumber, firstname, lastname, phone, email,
+                                                     umajor)
+                return jsonify(Users=result), 201
 
     def deleteUser(self, userid):
         dao = UserDao.UserDAO()

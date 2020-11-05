@@ -4,7 +4,7 @@ from handler.ProjectHandler import ProjectHandler
 from handler.PostHandler import PostHandler
 from handler.CredentialHandler import CredentialHandler
 from handler.MemberHandler import MemberHandler
-
+from handler.MessagesHandler import MessagesHandler
 from flask_cors import CORS
 
 # Activate
@@ -27,6 +27,15 @@ def users():
         if not request.args:
             print("Here")
             return UsersHandler().getAllUsers()
+
+@app.route('/message',methods=['GET','POST'])
+def messages():
+    if request.method == 'POST':
+        return MessagesHandler().insertMessageJson(request.json)
+    else:
+        if request.args:
+            return MessagesHandler().getMessages(request.args)
+
 
 
 @app.route('/project', methods=['GET', 'POST'])
