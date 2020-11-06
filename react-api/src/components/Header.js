@@ -5,11 +5,14 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
+import Col from 'react-bootstrap/esm/Col';
+import Row from 'react-bootstrap/esm/Row';
 
 function Header (){
     return(
         <Container fluid>
-            <Navbar bg="light" expand="lg">
+            
+            <Navbar className="navBar" expand="lg" variant="dark">
               <Navbar.Brand href="#home">MachaWare</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
@@ -18,17 +21,10 @@ function Header (){
               <Nav.Link href="/profile">Profile</Nav.Link>
               <Nav.Link href="/following">Following</Nav.Link>
               <Nav.Link href="/messages">Messages</Nav.Link>
-              
-              {/* 
-              Solely for testing purposes delete once initial testing is done or when states for the home page are
-              created
-               */}
               <Nav.Link href="/login">Login</Nav.Link>
               <Nav.Link href="/signup">Signup</Nav.Link>
-              {/* 
-              Read previous comment
-              */}
              </Nav>
+
             <Form inline>
               <FormControl type="text" placeholder="Search" className="mr-sm-2" />
               <Button variant="outline-success">Search</Button>
@@ -57,7 +53,7 @@ const headerStyle = {
 }
 
 const headerStyle2 = {
-    color:'#D3D3D3',
+    color:'#FFFFFF',
     textAlign: 'center'
     
 }
