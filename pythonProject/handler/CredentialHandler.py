@@ -39,23 +39,6 @@ class CredentialHandler:
             Credential = self.build_credential_dict(row)
             return jsonify(Credential=Credential)
 
-    def insertCredential(self, form):
-        print("form: ", form)
-        if len(form) != 4:
-            return jsonify(Error="Malformed Credential request"), 400
-        else:
-            username = form['UserName']
-            password = form['Password']
-            userid = form['UserID']
-            status = form['Status']
-            if username and password and userid and status:
-                dao = CredentialDao.CredentialDAO()
-                credentialid = dao.insert(username, password, userid, status)
-                result = self.build_credential_attributes(credentialid, username, password, userid, status)
-                return jsonify(Credential=result), 201
-            else:
-                return jsonify(Error="Unexpected attributes in Credential request"), 400
-
     def insertCredentialJson(self, json):
         username = json['UserName']
         password = json['Password']
@@ -76,25 +59,6 @@ class CredentialHandler:
         else:
             dao.delete(Credentialid)
             return jsonify(DeleteStatus="OK"), 200
-
-    def updateCredential(self, Credentialid, form):
-        dao = CredentialDao.CredentialDAO()
-        if not dao.getCredentialById(Credentialid):
-            return jsonify(Error="Credential not found."), 404
-        else:
-            if len(form) != 4:
-                return jsonify(Error="Malformed update request"), 400
-            else:
-                username = form['UserName']
-                password = form['Password']
-                userid = form['UserID']
-                status = form['Status']
-                if username and password and userid and status:
-                    dao.update(username, password, userid, status)
-                    result = self.build_credential_attributes(Credentialid, username, password, userid, status)
-                    return jsonify(Credential=result), 200
-                else:
-                    return jsonify(Error="Unexpected attributes in update request"), 400
 
     def updateCredentialJson(self, Credentialid, json):
         dao = CredentialDao.CredentialDAO()

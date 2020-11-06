@@ -5,6 +5,8 @@ from handler.PostHandler import PostHandler
 from handler.CredentialHandler import CredentialHandler
 from handler.MemberHandler import MemberHandler
 from handler.MessagesHandler import MessagesHandler
+from handler.CommentHandler import CommentsHandler
+from handler.ImagesHandler import ImagesHandler
 from flask_cors import CORS
 
 # Activate
@@ -28,14 +30,14 @@ def users():
             print("Here")
             return UsersHandler().getAllUsers()
 
-@app.route('/message',methods=['GET','POST'])
+
+@app.route('/message', methods=['GET', 'POST'])
 def messages():
     if request.method == 'POST':
         return MessagesHandler().insertMessageJson(request.json)
     else:
         if request.args:
-            return MessagesHandler().getMessages(request.args)
-
+            return MessagesHandler().getAllMessagess()
 
 
 @app.route('/project', methods=['GET', 'POST'])
@@ -76,6 +78,24 @@ def credentials():
     else:
         if not request.args:
             return CredentialHandler().getAllCredentials()
+
+@app.route('/Comments', methods=['GET', 'POST'])
+def credentials():
+    if request.method == 'POST':
+        print("REQUEST: ", request.json)
+        return CommentsHandler().insertCommentJson(request.json)
+    else:
+        if not request.args:
+            return CommentsHandler().getAllComments()
+
+@app.route('/Images', methods=['GET', 'POST'])
+def credentials():
+    if request.method == 'POST':
+        print("REQUEST: ", request.json)
+        return ImagesHandler().insertImageJson(request.json)
+    else:
+        if not request.args:
+            return ImagesHandler().getAllImages()
 
 
 if __name__ == '__main__':

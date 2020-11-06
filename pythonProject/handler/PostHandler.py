@@ -40,24 +40,6 @@ class PostHandler:
             Post = self.build_post_dict(row)
             return jsonify(Post = Post)
 
-
-    def insertPost(self, form):
-        print("form: ", form)
-        if len(form) != 4:
-            return jsonify(Error = "Malformed post request"), 400
-        else:
-            posttext = form['PostText']
-            userid = form['UserID']
-            date = form['Date']
-            status = form['Status']
-            if posttext and userid and date and status:
-                dao = PostDao.PostDAO()
-                postid = dao.insert(posttext, userid, date, status)
-                result = self.build_post_attributes(postid, posttext, userid, date, status)
-                return jsonify(Post=result), 201
-            else:
-                return jsonify(Error="Unexpected attributes in post request"), 400
-
     def insertPostJson(self, json):
         posttext = json['PostText']
         userid = json['UserID']
@@ -78,25 +60,6 @@ class PostHandler:
         else:
             dao.delete(postid)
             return jsonify(DeleteStatus = "OK"), 200
-
-    def updatePost(self, postid, form):
-        dao = PostDao.PostDAO()
-        if not dao.getPostById(postid):
-            return jsonify(Error = "Post not found."), 404
-        else:
-            if len(form) != 4:
-                return jsonify(Error="Malformed update request"), 400
-            else:
-                posttext = form['PostText']
-                userid = form['UserID']
-                date = form['Date']
-                status = form['Status']
-                if posttext and userid and date and status:
-                    dao.update(posttext ,userid ,date ,status)
-                    result = self.build_post_attributes(postid, posttext, userid, date, status)
-                    return jsonify(Post=result), 200
-                else:
-                    return jsonify(Error="Unexpected attributes in update request"), 400
 
     def updatePostJson(self, postid, json):
         dao = PostDao.PostDAO()

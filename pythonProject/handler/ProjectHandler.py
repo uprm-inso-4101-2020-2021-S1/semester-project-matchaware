@@ -2,7 +2,6 @@ from flask import jsonify
 from dao import ProjectDao
 
 
-
 class ProjectHandler:
     def build_project_dict(self, row):
         result = {}
@@ -37,29 +36,10 @@ class ProjectHandler:
         dao = ProjectDao.ProjectDAO()
         row = dao.getProjectById(ProjectID)
         if not row:
-            return jsonify(Error = "Project Not Found"), 404
+            return jsonify(Error="Project Not Found"), 404
         else:
             Project = self.build_project_dict(row)
-            return jsonify(Project = Project)
-
-
-    def insertProject(self, form):
-        print("form: ", form)
-        if len(form) != 5:
-            return jsonify(Error = "Malformed post request"), 400
-        else:
-            projectname = form['ProjectName']
-            projectdescription = form['ProjectDescription']
-            imagelogo = form['ImageLogo']
-            projecttypenumber = form['ProjectTypeNumber']
-            status = form['Status']
-            if projectname and projectdescription and imagelogo and projecttypenumber and status:
-                dao = ProjectDao.ProjectDAO()
-                projectid = dao.insert(projectname, projectdescription, imagelogo, projecttypenumber, status)
-                result = self.build_project_attributes(projectid, projectname, projectdescription, imagelogo, projecttypenumber, status)
-                return jsonify(Project=result), 201
-            else:
-                return jsonify(Error="Unexpected attributes in post request"), 400
+            return jsonify(Project=Project)
 
     def insertProjectJson(self, json):
         projectname = json['ProjectName']
@@ -79,30 +59,10 @@ class ProjectHandler:
     def deleteProject(self, projectid):
         dao = ProjectDao.ProjectDAO
         if not dao.getProjectById(projectid):
-            return jsonify(Error = "Project not found."), 404
+            return jsonify(Error="Project not found."), 404
         else:
             dao.delete(projectid)
-            return jsonify(DeleteStatus = "OK"), 200
-
-    def updateProject(self, projectid, form):
-        dao = ProjectDao.ProjectDAO()
-        if not dao.getProjectById(projectid):
-            return jsonify(Error = "Project not found."), 404
-        else:
-            if len(form) != 5:
-                return jsonify(Error="Malformed update request"), 400
-            else:
-                projectname = form['ProjectName']
-                projectdescription = form['ProjectDescription']
-                imagelogo = form['ImageLogo']
-                projecttypenumber = form['ProjectTypeNumber']
-                status = form['Status']
-                if projectname and projectdescription and imagelogo and projecttypenumber and status:
-                    dao.update(projectname ,projectdescription ,imagelogo ,projecttypenumber ,status)
-                    result = self.build_project_attributes(projectid, projectname ,projectdescription, imagelogo, projecttypenumber, status)
-                    return jsonify(Project=result), 200
-                else:
-                    return jsonify(Error="Unexpected attributes in update request"), 400
+            return jsonify(DeleteStatus="OK"), 200
 
     def updateProjectJson(self, projectid, json):
         dao = ProjectDao.ProjectDAO()

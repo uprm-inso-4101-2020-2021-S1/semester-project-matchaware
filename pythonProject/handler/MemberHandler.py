@@ -40,24 +40,6 @@ class MemberHandler:
             Member = self.build_member_dict(row)
             return jsonify(Member = Member)
 
-
-    def insertMember(self, form):
-        print("form: ", form)
-        if len(form) != 4:
-            return jsonify(Error = "Malformed Member request"), 400
-        else:
-            projectid = form['ProjectID']
-            userid = form['UserID']
-            rollnumber = form['RollNumber']
-            status = form['Status']
-            if projectid and userid and rollnumber and status:
-                dao = MemberDao.MemberDAO()
-                memberid = dao.insert(projectid, userid, rollnumber, status)
-                result = self.build_member_attributes(memberid, projectid, userid, rollnumber, status)
-                return jsonify(Member=result), 201
-            else:
-                return jsonify(Error="Unexpected attributes in Member request"), 400
-
     def insertMemberJson(self, json):
         projectid = json['ProjectID']
         userid = json['UserID']
@@ -78,25 +60,6 @@ class MemberHandler:
         else:
             dao.delete(memberid)
             return jsonify(DeleteStatus = "OK"), 200
-
-    def updateMember(self, memberid, form):
-        dao = MemberDao.MemberDAO()
-        if not dao.getMemberById(memberid):
-            return jsonify(Error = "Member not found."), 404
-        else:
-            if len(form) != 4:
-                return jsonify(Error="Malformed update request"), 400
-            else:
-                projectid = form['ProjectID']
-                userid = form['UserID']
-                rollnumber = form['RollNumber']
-                status = form['Status']
-                if projectid and userid and rollnumber and status:
-                    dao.update(projectid, userid, rollnumber, status)
-                    result = self.build_member_attributes(projectid, projectid, userid, rollnumber, status)
-                    return jsonify(Member=result), 200
-                else:
-                    return jsonify(Error="Unexpected attributes in update request"), 400
 
     def updateMemberJson(self, Memberid, json):
         dao = MemberDao.MemberDAO()

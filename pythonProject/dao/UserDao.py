@@ -4,9 +4,13 @@ from config import dbconfig
 
 class UserDAO:
     # fix this url crap tonight
+   ## def __init__(self):
+   ##     connection_url = MySQLdb.connect(host='24.54.205.36', user='RemoteMatcha', passwd='RemoteMatcha', db='BeyondHorizonsDB',port = 6606)
+   ##     # connection_url = (host="localhost", user='Argent', passwd='ArgentSable776', db='MatchaWareDB')
+   ##     self.conn = connection_url
+
     def __init__(self):
-        connection_url = MySQLdb.connect(host='24.54.205.36', user='RemoteMatcha', passwd='RemoteMatcha', db='BeyondHorizonsDB',port = 6606)
-        # connection_url = (host="localhost", user='Argent', passwd='ArgentSable776', db='MatchaWareDB')
+        connection_url = MySQLdb.connect(host="localhost", user='root', passwd='root', db='BeyondHorizonsDB')
         self.conn = connection_url
 
     def getAllUsers(self):
@@ -23,15 +27,6 @@ class UserDAO:
         query = "select * from Users Where userid = %s;"
         cursor.execute(query, (UserID,))
         result = cursor.fetchone()
-        return result
-
-    def getUserbyEmail(self, Email):
-        cursor = self.conn.cursor()
-        query = "select * from Users where email = %s;"
-        cursor.execute(query, (Email,))
-        result = []
-        for row in cursor:
-            result.append(row)
         return result
 
     def insert(self, accounttypenumber, firstname, lastname, uphone, uemail, umajor):

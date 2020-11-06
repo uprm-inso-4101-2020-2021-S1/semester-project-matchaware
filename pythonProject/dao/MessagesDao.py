@@ -1,17 +1,25 @@
 import MySQLdb
 
 
-
-class MessagesDao:
+class MessageDao:
     # fix this url crap tonight
     def __init__(self):
         connection_url = MySQLdb.connect(host="localhost", user='root', passwd='root', db='BeyondHorizonsDB')
         self.conn = connection_url
 
-    def insertMessage(self, receptor, emisor, messagetext,date):
+    def getAllMessages(self):
         cursor = self.conn.cursor()
-        query = "INSERT INTO message(receptorid,emisorid, messagetext,  mdate) values(%s,%s,%s,%s) ;"
-        cursor.execute(query,(receptor,emisor,messagetext,date))
+        query = "select * from Messages;"
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
+    def insertMessage(self, ReceiverID, SenderID, MessageText, DateTime):
+        cursor = self.conn.cursor()
+        query = "INSERT INTO Messages(receiverid, senderid, messagetext, datetime) values(%s,%s,%s,%s) ;"
+        cursor.execute(query, (ReceiverID, SenderID, MessageText, DateTime))
         query = "SELECT LAST_INSERT_ID();"
         cursor.execute(query)
         messageid = cursor.fetchall()[0]
