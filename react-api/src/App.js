@@ -1,17 +1,42 @@
-import React from 'react';
-import { BrowserRouter as Router,Route} from 'react-router-dom';
+import React, { useState, useEffect} from 'react';
+import { BrowserRouter as Router,Route, Switch} from 'react-router-dom';
 import Header from './components/Header'
 import Profile from './components/Pages/Profile'
 import Following from './components/Pages/Following'
 import Messages from './components/Pages/Messages'
 import './App.css'
-import LoginAndSignup from './components/Pages/Login'
+import Login from './components/Pages/Login'
 import SignUp from './components/Pages/SignUp';
 import HomePage from './components/Pages/HomePage'
+import PrivateRoute from './utils/PrivateRoute'
+import PublicRoute from './utils/PublicRoute'
+import { getToken, removeUserSession, setUserSession } from './utils/Commons';
+import axios from 'axios'
+
 
 
 
     export default function App(){
+      const [authLoading, setAuthLoading] = useState(true)
+
+      useEffect(() => {
+        const token = getToken()
+        if (!token){
+          return
+        }
+    axios.get(`http://localhost:4000/verifyToken?token=${token}`).then(response => {
+      setUserSession(response.data.token, response.data.user)
+      setAuthLoading(false)
+    }).catch(error => {
+      removeUserSession()
+      setAuthLoading(false)
+    })
+  }, [])
+ 
+  if (authLoading && getToken()) {
+    return <div className="content">Checking Authentication...</div>
+  }
+
         return (
           <Router>
             <div className="App">
@@ -20,13 +45,15 @@ import HomePage from './components/Pages/HomePage'
                 <React.Fragment>
                   <HomePage />
                 </React.Fragment>
-              )} />  
+              )} /> 
 
-              <Route path="/profile" component={Profile} />
-              <Route path="/following" component={Following} />
-              <Route path="/messages" component={Messages} />
-              <Route path="/login" component={LoginAndSignup} />
-              <Route path="/signup" component={SignUp}/>
+              <Switch>
+              <PrivateRoute path="/profile" component={Profile} />
+              <PrivateRoute path="/following" component={Following} />
+              <PrivateRoute path="/messages" component={Messages} />
+              <PublicRoute path="/login" component={Login} />
+              <PublicRoute path="/signup" component={SignUp}/>
+              </Switch>
             </div>
           </Router>
         )
