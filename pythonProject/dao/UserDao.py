@@ -15,7 +15,7 @@ class UserDAO:
 
     def getAllUsers(self):
         cursor = self.conn.cursor()
-        query = "select * from users;"
+        query = "select * from Users;"
         cursor.execute(query)
         result = []
         for row in cursor:
@@ -29,10 +29,10 @@ class UserDAO:
         result = cursor.fetchone()
         return result
 
-    def insert(self, accounttypenumber, firstname, lastname, uphone, uemail, umajor):
+    def insert(self, accounttypenumber, firstname, lastname, phone, email, major):
         cursor = self.conn.cursor()
-        query = "insert into users( accounttypenumber, firstname, lastname, uphone, uemail,umajor) values (%s, %s, %s, %s, %s, %s) ;"
-        cursor.execute(query, (accounttypenumber, firstname, lastname, uphone, uemail,umajor,))
+        query = "insert into Users( accounttypenumber, firstname, lastname, phone, email,major) values (%s, %s, %s, %s, %s, %s) ;"
+        cursor.execute(query, (accounttypenumber, firstname, lastname, phone, email,major,))
         query = "SELECT LAST_INSERT_ID();"
         cursor.execute(query)
         userid = cursor.fetchall()[0]
@@ -48,7 +48,7 @@ class UserDAO:
 
     def update(self, UserID, accounttypenumber, firstname, lastname, phone, email, gender, status):
         cursor = self.conn.cursor()
-        query = "update users set account  typenumber = %s, firstname = %s, lastname = %s, phone = %s, email = %s, gender = %s, status = %s where userid = %s;"
+        query = "update Users set account  typenumber = %s, firstname = %s, lastname = %s, phone = %s, email = %s, gender = %s, status = %s where userid = %s;"
         cursor.execute(query, (accounttypenumber, firstname, lastname, phone, email, gender, status, UserID,))
         self.conn.commit()
         return UserID

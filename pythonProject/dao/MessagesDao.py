@@ -16,10 +16,10 @@ class MessageDao:
             result.append(row)
         return result
 
-    def insertMessage(self, ReceiverID, SenderID, MessageText, DateTime):
+    def insertMessage(self, ReceiverID, SenderID, MessageText, DateTime, Status):
         cursor = self.conn.cursor()
-        query = "INSERT INTO Messages(receiverid, senderid, messagetext, datetime) values(%s,%s,%s,%s) ;"
-        cursor.execute(query, (ReceiverID, SenderID, MessageText, DateTime))
+        query = "INSERT INTO Messages(receiverid, senderid, messagetext, messagedate, status) values(%s,%s,%s,%s, %s) ;"
+        cursor.execute(query, (ReceiverID, SenderID, MessageText, DateTime, Status))
         query = "SELECT LAST_INSERT_ID();"
         cursor.execute(query)
         messageid = cursor.fetchall()[0]

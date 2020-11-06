@@ -24,11 +24,13 @@ class ProjectDAO:
         result = cursor.fetchone()
         return result
 
-    def insert(self, projectname, projectdescription, imagelogo, projecttypenumber, status):
+    def insert(self, projectname, projectdescription, imagelogo,userid, projecttypenumber, status):
         cursor = self.conn.cursor()
-        query = "insert into Project( projectname, projectdescription, imagelogo, projecttypenumber, status) values (%s, %s, %s, %s, %s) returning projectid;"
-        cursor.execute(query, (projectname, projectdescription, imagelogo, projecttypenumber, status,))
-        projectid = cursor.fetchone()[0]
+        query = "insert into Project( projectname, projectdescription, imagelogo, userid, projecttypenumber, status) values (%s, %s, %s, %s, %s, %s);"
+        cursor.execute(query, (projectname, projectdescription, imagelogo, userid, projecttypenumber, status,))
+        query = "SELECT LAST_INSERT_ID();"
+        cursor.execute(query)
+        projectid = cursor.fetchall()[0]
         self.conn.commit()
         return projectid
 
@@ -39,9 +41,9 @@ class ProjectDAO:
         self.conn.commit()
         return ProjectID
 
-    def update(self, projectid, projectname, projectdescription, imagelogo, projecttypenumber, status):
+    def update(self, projectid, projectname, projectdescription, imagelogo, userid, projecttypenumber, status):
         cursor = self.conn.cursor()
-        query = "update Project set projectname = %s, projectdescription = %s, imagelogo = %s, projecttypenumber = %s, status where projectid = %s;"
-        cursor.execute(query, (projectname, projectdescription, imagelogo, projecttypenumber, status, projectid,))
+        query = "update Project set projectname = %s, projectdescription = %s, imagelogo = %s, and userid = %s, projecttypenumber = %s, status where projectid = %s;"
+        cursor.execute(query, (projectname, projectdescription, imagelogo, userid, projecttypenumber, status, projectid,))
         self.conn.commit()
         return projectid

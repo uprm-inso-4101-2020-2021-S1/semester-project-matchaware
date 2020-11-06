@@ -9,16 +9,16 @@ class PostHandler:
         result['PostID'] = row[0]
         result['PostText'] = row[1]
         result["UserID"] = row[2]
-        result['Date'] = row[3]
+        result['PostDate'] = row[3]
         result['Status'] = row[4]
         return result
 
-    def build_post_attributes(self, PostID, PostText, UserID, Date, Status):
+    def build_post_attributes(self, PostID, PostText, UserID, PostDate, Status):
         result = {}
         result['PostID'] = PostID
         result['PostText'] = PostText
         result["UserID"] = UserID
-        result['Date'] = Date
+        result['PostDate'] = PostDate
         result['Status'] = Status
         return result
 
@@ -43,12 +43,12 @@ class PostHandler:
     def insertPostJson(self, json):
         posttext = json['PostText']
         userid = json['UserID']
-        date = json['Date']
+        postdate = json['PostDate']
         status = json['Status']
-        if posttext and userid and date and status:
+        if posttext and userid and postdate and status:
             dao = PostDao.PostDAO()
-            postid = dao.insert(posttext, userid, date, status)
-            result = self.build_post_attributes(postid, posttext, userid, date, status)
+            postid = dao.insert(posttext, userid, postdate, status)
+            result = self.build_post_attributes(postid, posttext, userid, postdate, status)
             return jsonify(Post=result), 201
         else:
             return jsonify(Error="Unexpected attributes in post request"), 400

@@ -31,7 +31,7 @@ def users():
             return UsersHandler().getAllUsers()
 
 
-@app.route('/message', methods=['GET', 'POST'])
+@app.route('/messages', methods=['GET', 'POST'])
 def messages():
     if request.method == 'POST':
         return MessagesHandler().insertMessageJson(request.json)
@@ -79,8 +79,9 @@ def credentials():
         if not request.args:
             return CredentialHandler().getAllCredentials()
 
-@app.route('/Comments', methods=['GET', 'POST'])
-def credentials():
+
+@app.route('/comments', methods=['GET', 'POST'])
+def comments():
     if request.method == 'POST':
         print("REQUEST: ", request.json)
         return CommentsHandler().insertCommentJson(request.json)
@@ -88,8 +89,9 @@ def credentials():
         if not request.args:
             return CommentsHandler().getAllComments()
 
-@app.route('/Images', methods=['GET', 'POST'])
-def credentials():
+
+@app.route('/images', methods=['GET', 'POST'])
+def images():
     if request.method == 'POST':
         print("REQUEST: ", request.json)
         return ImagesHandler().insertImageJson(request.json)

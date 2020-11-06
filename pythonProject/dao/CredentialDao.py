@@ -10,7 +10,7 @@ class CredentialDAO:
 
     def getAllCredentials(self):
         cursor = self.conn.cursor()
-        query = "select * from Credential;"
+        query = "select * from Credentials;"
         cursor.execute(query)
         result = []
         for row in cursor:
@@ -19,29 +19,31 @@ class CredentialDAO:
 
     def getCredentialById(self, CredentialID):
         cursor = self.conn.cursor()
-        query = "select * from Credential Where credentialid = %s;"
+        query = "select * from Credentials Where credentialid = %s;"
         cursor.execute(query, (CredentialID,))
         result = cursor.fetchone()
         return result
 
     def insert(self, username, password, userid, status):
         cursor = self.conn.cursor()
-        query = "insert into Credential(username, password, userid, status) values (%s, %s, %s, %s) returning credentialid;"
+        query = "insert into Credentials(username, password, userid, status) values (%s, %s, %s, %s);"
         cursor.execute(query, (username, password, userid, status,))
-        credentialid = cursor.fetchone()[0]
+        query = "SELECT LAST_INSERT_ID();"
+        cursor.execute(query)
+        credentialid = cursor.fetchall()[0]
         self.conn.commit()
         return credentialid
 
     def delete(self, CredentialID):
         cursor = self.conn.cursor()
-        query = "delete from Credential where credentialid = %s;"
+        query = "delete from Credentials where credentialid = %s;"
         cursor.execute(query, (CredentialID,))
         self.conn.commit()
         return CredentialID
 
     def update(self, credentialid,username, password, userid, status):
         cursor = self.conn.cursor()
-        query = "update Credential set credentialid = %s, username = %s, password = %s, userid = %s, status = %s where Credentialid = %s;"
+        query = "update Credentials set credentialid = %s, username = %s, password = %s, userid = %s, status = %s where Credentialid = %s;"
         cursor.execute(query, (credentialid, username, password, userid, status, credentialid,))
         self.conn.commit()
         return credentialid

@@ -24,11 +24,13 @@ class MemberDAO:
         result = cursor.fetchone()
         return result
 
-    def insert(self, projectid, userid, date, status):
+    def insert(self, projectid, userid, roletypenumber, status):
         cursor = self.conn.cursor()
-        query = "insert into Member(projectid, userid, rollnumber, status) values (%s, %s, %s, %s) returning memberid;"
-        cursor.execute(query, (projectid, userid, date, status,))
-        Memberid = cursor.fetchone()[0]
+        query = "insert into Member(projectid, userid, roletypenumber, status) values (%s, %s, %s, %s);"
+        cursor.execute(query, (projectid, userid, roletypenumber, status,))
+        query = "SELECT LAST_INSERT_ID();"
+        cursor.execute(query)
+        Memberid = cursor.fetchall()[0]
         self.conn.commit()
         return Memberid
 
@@ -39,9 +41,9 @@ class MemberDAO:
         self.conn.commit()
         return MemberID
 
-    def update(self, memberid, projectid, userid, date, status):
+    def update(self, memberid, projectid, userid, rolltypenumber, status):
         cursor = self.conn.cursor()
-        query = "update Member set memberid = %s, projectid = %s, userid = %s, date = %s, status = %s where memberid = %s;"
-        cursor.execute(query, (projectid, userid, date, status, memberid,))
+        query = "update Member set memberid = %s, projectid = %s, userid = %s, rolltypenumber = %s, status = %s where memberid = %s;"
+        cursor.execute(query, (projectid, userid, rolltypenumber, status, memberid,))
         self.conn.commit()
         return memberid

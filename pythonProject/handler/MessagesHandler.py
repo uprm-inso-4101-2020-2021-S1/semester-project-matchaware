@@ -10,16 +10,17 @@ class MessagesHandler:
         result['ReceiverID'] = row[1]
         result["SenderID"] = row[2]
         result['MessageText'] = row[3]
-        result['DateTime'] = row[4]
+        result['MessageDate'] = row[4]
         return result
 
-    def build_message_attributes(self, MessageID, ReceiverID, SenderID, MessageText, DateTime):
+    def build_message_attributes(self, MessageID, ReceiverID, SenderID, MessageText, DateTime, Status):
         result = {}
         result['MessageID'] = MessageID
         result['ReceiverID'] = ReceiverID
         result["SenderID"] = SenderID
         result['MessageText'] = MessageText
-        result['DateTime'] = DateTime
+        result['MessageDate'] = DateTime
+        result['Status'] = Status
         return result
 
     def getAllMessagess(self):
@@ -31,16 +32,16 @@ class MessagesHandler:
             result_list.append(result)
         return jsonify(Messages=result_list)
 
-    def insertMessageJson(self, form):
-        if form and len(form) == 4:
-            ReceiverID = form['ReceiverID']
-            SenderID = form['SenderID']
-            MessageText = form['MessageText']
-            DateTime = form['DateTime']
+    def insertMessageJson(self, json):
+            ReceiverID = json['ReceiverID']
+            SenderID = json['SenderID']
+            MessageText = json['MessageText']
+            MessageDate = json['MessageDate']
+            Status = json['Status']
 
-            if ReceiverID and SenderID and MessageText and DateTime:
+            if ReceiverID and SenderID and MessageText and MessageDate and Status:
                 dao = MessagesDao.MessageDao()
-                messageid = dao.insertMessage(ReceiverID, SenderID, MessageText,DateTime,)
+                messageid = dao.insertMessage(ReceiverID, SenderID, MessageText, MessageDate,Status,)
 
                 return jsonify(messageid=messageid), 201
             else:

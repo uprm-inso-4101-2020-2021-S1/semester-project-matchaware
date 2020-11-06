@@ -24,11 +24,13 @@ class PostDAO:
         result = cursor.fetchone()
         return result
 
-    def insert(self, posttext, userid, date, status):
+    def insert(self, posttext, userid, postdate, status):
         cursor = self.conn.cursor()
-        query = "insert into Post(posttext, userid, date, status) values (%s, %s, %s, %s) returning postid;"
-        cursor.execute(query, (posttext, userid, date, status,))
-        postid = cursor.fetchone()[0]
+        query = "insert into Post(posttext, userid, postdate, status) values (%s, %s, %s, %s);"
+        cursor.execute(query, (posttext, userid, postdate, status,))
+        query = "SELECT LAST_INSERT_ID();"
+        cursor.execute(query)
+        postid = cursor.fetchall()[0]
         self.conn.commit()
         return postid
 

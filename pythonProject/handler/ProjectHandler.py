@@ -9,17 +9,19 @@ class ProjectHandler:
         result['ProjectName'] = row[1]
         result['ProjectDescription'] = row[2]
         result['ImageLogo'] = row[3]
-        result['ProjectType'] = row[4]
-        result['Status'] = row[5]
+        result['UserID'] = row[4]
+        result['ProjectTypeNumber'] = row[5]
+        result['Status'] = row[6]
         return result
 
-    def build_project_attributes(self, ProjectID, ProjectName, ProjectDescription, ImageLogo, ProjectType, Status):
+    def build_project_attributes(self, ProjectID, ProjectName, ProjectDescription, ImageLogo, UserID, ProjectType, Status):
         result = {}
         result['ProjectID'] = ProjectID
         result['ProjectName'] = ProjectName
         result['ProjectDescription'] = ProjectDescription
         result['ImageLogo'] = ImageLogo
-        result['ProjectType'] = ProjectType
+        result['UserID'] = UserID
+        result['ProjectTypeNumber'] = ProjectType
         result['Status'] = Status
         return result
 
@@ -45,12 +47,13 @@ class ProjectHandler:
         projectname = json['ProjectName']
         projectdescription = json['ProjectDescription']
         imagelogo = json['ImageLogo']
+        userid = json['UserID']
         projecttypenumber = json['ProjectTypeNumber']
         status = json['Status']
-        if projectname and projectdescription and imagelogo and projecttypenumber and status:
+        if projectname and projectdescription and imagelogo and userid and projecttypenumber and status:
             dao = ProjectDao.ProjectDAO()
-            projectid = dao.insert(projectname, projectdescription, imagelogo, projecttypenumber, status)
-            result = self.build_project_attributes(projectid, projectname, projectdescription, imagelogo,
+            projectid = dao.insert(projectname, projectdescription, imagelogo, userid, projecttypenumber, status)
+            result = self.build_project_attributes(projectid, projectname, projectdescription, imagelogo, userid,
                                                    projecttypenumber, status)
             return jsonify(Project=result), 201
         else:
@@ -72,10 +75,11 @@ class ProjectHandler:
             projectname = json['ProjectName']
             projectdescription = json['ProjectDescription']
             imagelogo = json['ImageLogo']
+            userid = json['UserID']
             projecttypenumber = json['ProjectTypeNumber']
             status = json['Status']
-            if projectname and projectdescription and imagelogo and projecttypenumber and status:
-                dao.update(projectname, projectdescription, imagelogo, projecttypenumber, status)
-                result = self.build_project_attributes(projectid, projectname, projectdescription, imagelogo,
+            if projectname and projectdescription and imagelogo and userid and projecttypenumber and status:
+                dao.update(projectname, projectdescription, imagelogo,userid ,projecttypenumber, status)
+                result = self.build_project_attributes(projectid, projectname, projectdescription, imagelogo,userid,
                                                        projecttypenumber, status)
                 return jsonify(Project=result), 200

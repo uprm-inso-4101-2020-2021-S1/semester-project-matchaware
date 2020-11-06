@@ -9,16 +9,16 @@ class MemberHandler:
         result['MemberID'] = row[0]
         result['ProjectID'] = row[1]
         result["UserID"] = row[2]
-        result['RollNumber'] = row[3]
+        result['RoleTypeNumber'] = row[3]
         result['Status'] = row[4]
         return result
 
-    def build_member_attributes(self, MemberID, ProjectID, UserID, RollNumber, Status):
+    def build_member_attributes(self, MemberID, ProjectID, UserID, RoleNumber, Status):
         result = {}
         result['MemberID'] = MemberID
         result['ProjectID'] = ProjectID
         result["UserID"] = UserID
-        result['RollNumber'] = RollNumber
+        result['RoleTypeNumber'] = RoleNumber
         result['Status'] = Status
         return result
 
@@ -43,12 +43,12 @@ class MemberHandler:
     def insertMemberJson(self, json):
         projectid = json['ProjectID']
         userid = json['UserID']
-        rollnumber = json['RollNumber']
+        rolenumber = json['RoleTypeNumber']
         status = json['Status']
-        if projectid and userid and rollnumber and status:
+        if projectid and userid and rolenumber and status:
             dao = MemberDao.MemberDAO()
-            memberid = dao.insert(projectid, userid, rollnumber, status)
-            result = self.build_member_attributes(memberid, projectid, userid, rollnumber, status)
+            memberid = dao.insert(projectid, userid, rolenumber, status)
+            result = self.build_member_attributes(memberid, projectid, userid, rolenumber, status)
             return jsonify(Member=result), 201
         else:
             return jsonify(Error="Unexpected attributes in Member request"), 400
@@ -68,7 +68,7 @@ class MemberHandler:
         else:
             projectid = json['ProjectID']
             userid = json['UserID']
-            rollnumber = json['RollNumber']
+            rollnumber = json['RollTypeNumber']
             status = json['Status']
             if projectid and userid and rollnumber and status:
                 dao.update(projectid, userid, rollnumber, status)

@@ -2,7 +2,7 @@ import MySQLdb
 from config import dbconfig
 
 
-class ImageDAO:
+class ImageDao:
     # fix this url crap tonight
    ## def __init__(self):
    ##     connection_url = MySQLdb.connect(host='24.54.205.36', Image='RemoteMatcha', passwd='RemoteMatcha', db='BeyondHorizonsDB',port = 6606)
@@ -15,7 +15,7 @@ class ImageDAO:
 
     def getAllImages(self):
         cursor = self.conn.cursor()
-        query = "select * from Image;"
+        query = "select * from Images;"
         cursor.execute(query)
         result = []
         for row in cursor:

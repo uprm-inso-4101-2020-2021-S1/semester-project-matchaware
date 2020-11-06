@@ -50,12 +50,14 @@ class UsersHandler:
             lastname = json['LastName']
             phone = json['Phone']
             email = json['Email']
-            umajor = json['Major']
-            if accounttypenumber and firstname and lastname and phone and email and umajor:
+            major = json['Major']
+            if accounttypenumber and firstname and lastname and phone and email and major:
                 dao = UserDao.UserDAO()
-                userid = dao.insert(accounttypenumber, firstname, lastname, phone, email, umajor)
-                result = self.build_users_attributes(userid, accounttypenumber, firstname, lastname, phone, email,umajor)
+                userid = dao.insert(accounttypenumber, firstname, lastname, phone, email, major)
+                result = self.build_users_attributes(userid, accounttypenumber, firstname, lastname, phone, email,major)
                 return jsonify(Users=result), 201
+            else:
+                return jsonify(Error="Unexpected attributes in post request"), 400
 
     def deleteUser(self, userid):
         dao = UserDao.UserDAO()

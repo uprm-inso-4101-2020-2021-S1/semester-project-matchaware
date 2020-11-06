@@ -3,7 +3,7 @@ from dao import CommentDao
 
 
 class CommentsHandler:
-    def build_Comments_dict(self, row):
+    def build_comments_dict(self, row):
         result = {}
         result['CommentID'] = row[0]
         result['PostID'] = row[1]
@@ -13,7 +13,7 @@ class CommentsHandler:
         result['CommentStatus'] = row[5]
         return result
 
-    def build_Comments_attributes(self, CommentID, PostID, CommentText, UserID, CommentDate, CommentStatus):
+    def build_comments_attributes(self, CommentID, PostID, CommentText, UserID, CommentDate, CommentStatus):
         result = {}
         result['CommentID'] = CommentID
         result['PostID'] = PostID
@@ -28,7 +28,7 @@ class CommentsHandler:
         Comments_list = dao.getAllComments()
         result_list = []
         for row in Comments_list:
-            result = self.build_Comments_dict(row)
+            result = self.build_comments_dict(row)
             result_list.append(result)
         return jsonify(Comments=result_list)
 
@@ -38,7 +38,7 @@ class CommentsHandler:
         if not row:
             return jsonify(Error="Comment Not Found"), 404
         else:
-            Comments = self.build_Comments_dict(row)
+            Comments = self.build_comments_dict(row)
             return jsonify(Comments=Comments)
 
     def insertCommentJson(self, json):
@@ -50,9 +50,12 @@ class CommentsHandler:
         if PostID and CommentText and UserID and CommentDate and CommentStatus:
             dao = CommentDao.CommentDao()
             CommentID = dao.insert(PostID and CommentText and UserID and CommentDate and CommentStatus)
-            result = self.build_Comments_attributes(CommentID,
+            result = self.build_comments_attributes(CommentID,
                                                     PostID and CommentText and UserID and CommentDate and CommentStatus)
             return jsonify(Comments=result), 201
+        else:
+            return jsonify(Error="Unexpected attributes in post request"), 400
+
 
     def deleteComment(self, Commentid):
         dao = CommentDao.CommentDao()
@@ -74,5 +77,5 @@ class CommentsHandler:
             CommentStatus = json['CommentStatus']
             if PostID and CommentText and UserID and CommentDate and CommentStatus:
                 dao.update(CommentID, PostID, CommentText, UserID, CommentDate, CommentStatus)
-                result = self.build_Comments_attributes(CommentID, PostID, CommentText, UserID, CommentDate, CommentStatus)
+                result = self.build_comments_attributes(CommentID, PostID, CommentText, UserID, CommentDate, CommentStatus)
                 return jsonify(Comments=result), 200

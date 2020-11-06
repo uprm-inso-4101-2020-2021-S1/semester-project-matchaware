@@ -22,7 +22,7 @@ class ImagesHandler:
         return result
 
     def getAllImages(self):
-        dao = ImageDao.ImageDAO()
+        dao = ImageDao.ImageDao()
         Images_list = dao.getAllImages()
         result_list = []
         for row in Images_list:
@@ -51,7 +51,7 @@ class ImagesHandler:
             return jsonify(Images=result), 201
 
     def deleteImage(self, Imageid):
-        dao = ImageDao.ImageDAO()
+        dao = ImageDao.ImageDao()
         if not dao.getImageById(Imageid):
             return jsonify(Error="Image not found."), 404
         else:
@@ -59,7 +59,7 @@ class ImagesHandler:
             return jsonify(DeleteStatus="OK"), 200
 
     def updateImageJson(self, ImageID, json):
-        dao = ImageDao.ImageDAO()
+        dao = ImageDao.ImageDao()
         if not dao.getImageById(ImageID):
             return jsonify(Error="Image not found."), 404
         else:
