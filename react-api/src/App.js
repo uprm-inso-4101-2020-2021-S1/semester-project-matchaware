@@ -12,6 +12,7 @@ import PrivateRoute from './utils/PrivateRoute'
 import PublicRoute from './utils/PublicRoute'
 import { getToken, removeUserSession, setUserSession } from './utils/Commons';
 import axios from 'axios'
+import LandingPage from './components/Pages/Lands/LandingPage'
 
 
 
@@ -43,7 +44,7 @@ import axios from 'axios'
               <Header />
               <Route exact path="/" render={props =>(
                 <React.Fragment>
-                  <HomePage />
+                  <LandingPage />
                 </React.Fragment>
               )} /> 
 
