@@ -36,7 +36,8 @@ def messages():
     if request.method == 'POST':
         return MessagesHandler().insertMessageJson(request.json)
     else:
-        if request.args:
+        if not request.args:
+            print("Here")
             return MessagesHandler().getAllMessagess()
 
 
