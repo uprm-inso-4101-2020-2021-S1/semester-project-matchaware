@@ -15,7 +15,7 @@ class UsersHandler:
         result['Status'] = row[7]
         return result
 
-    def build_users_attributes(self, UserID, AccountTypeNumber,  FirstName, LastName, Phone, Email, major):
+    def build_users_attributes(self, UserID, AccountTypeNumber,  FirstName, LastName, Phone, Email, Major):
         result = {}
         result['UserID'] = UserID
         result['AccountTypeNumber'] = AccountTypeNumber
@@ -23,7 +23,7 @@ class UsersHandler:
         result['LastName'] = LastName
         result['Phone'] = Phone
         result['Email'] = Email
-        result['major'] = major
+        result['Major'] = Major
         return result
 
     def getAllUsers(self):

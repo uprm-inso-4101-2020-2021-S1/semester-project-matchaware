@@ -27,7 +27,6 @@ def users():
         return UsersHandler().insertUserJson(request.json)
     else:
         if not request.args:
-            print("Here")
             return UsersHandler().getAllUsers()
 
 

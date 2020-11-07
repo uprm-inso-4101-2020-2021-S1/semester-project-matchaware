@@ -49,9 +49,9 @@ class CommentsHandler:
         CommentStatus = json['CommentStatus']
         if PostID and CommentText and UserID and CommentDate and CommentStatus:
             dao = CommentDao.CommentDao()
-            CommentID = dao.insert(PostID and CommentText and UserID and CommentDate and CommentStatus)
+            CommentID = dao.insert(PostID, CommentText, UserID, CommentDate, CommentStatus)
             result = self.build_comments_attributes(CommentID,
-                                                    PostID and CommentText and UserID and CommentDate and CommentStatus)
+                                                    PostID, CommentText, UserID, CommentDate, CommentStatus)
             return jsonify(Comments=result), 201
         else:
             return jsonify(Error="Unexpected attributes in post request"), 400

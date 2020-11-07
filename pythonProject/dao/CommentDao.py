@@ -10,7 +10,7 @@ class CommentDao:
    ##     self.conn = connection_url
 
     def __init__(self):
-        connection_url = MySQLdb.connect(host="localhost", Comment='root', passwd='root', db='BeyondHorizonsDB')
+        connection_url = MySQLdb.connect(host="localhost", user='root', passwd='root', db='BeyondHorizonsDB')
         self.conn = connection_url
 
     def getAllComments(self):
