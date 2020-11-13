@@ -29,10 +29,10 @@ class UserDAO:
         result = cursor.fetchone()
         return result
 
-    def insert(self, accounttypenumber, firstname, lastname, phone, email, major):
+    def insert(self, accounttypenumber, firstname, lastname, phone, email, majornumber, aboutme, yearofenrollment, creationdate, lastlogin, status):
         cursor = self.conn.cursor()
-        query = "insert into Users( accounttypenumber, firstname, lastname, phone, email,major) values (%s, %s, %s, %s, %s, %s) ;"
-        cursor.execute(query, (accounttypenumber, firstname, lastname, phone, email,major,))
+        query = "insert into Users(accounttypenumber, firstname, lastname, phone, email, majornumber, aboutme, yearofenrollment, creationdate, lastlogin, status) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ;"
+        cursor.execute(query, (accounttypenumber, firstname, lastname, phone, email, majornumber, aboutme, yearofenrollment, creationdate, lastlogin, status))
         query = "SELECT LAST_INSERT_ID();"
         cursor.execute(query)
         userid = cursor.fetchall()[0]
@@ -46,9 +46,9 @@ class UserDAO:
         self.conn.commit()
         return UserID
 
-    def update(self, UserID, accounttypenumber, firstname, lastname, phone, email, gender, status):
+    def update(self, UserID, accounttypenumber, firstname, lastname, phone, email, majornumber, aboutme, yearofenrollment, creationdate, lastlogin, status):
         cursor = self.conn.cursor()
-        query = "update Users set account  typenumber = %s, firstname = %s, lastname = %s, phone = %s, email = %s, gender = %s, status = %s where userid = %s;"
-        cursor.execute(query, (accounttypenumber, firstname, lastname, phone, email, gender, status, UserID,))
+        query = "update Users set accounttypenumber = %s, firstname = %s, lastname = %s, phone = %s, email = %s, majornumber = %s, aboutme = %s, yearofenrollment = %s, creationdate = %s, lastlogin = %s, status = %s where userid = %s;"
+        cursor.execute(query, (accounttypenumber, firstname, lastname, phone, email, majornumber, aboutme, yearofenrollment, creationdate, lastlogin, status, UserID,))
         self.conn.commit()
         return UserID

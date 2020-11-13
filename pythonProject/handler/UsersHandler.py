@@ -11,11 +11,15 @@ class UsersHandler:
         result['LastName'] = row[3]
         result['Phone'] = row[4]
         result['Email'] = row[5]
-        result['Major'] = row[6]
-        result['Status'] = row[7]
+        result['MajorNumber'] = row[6]
+        result['AboutMe'] = row[7]
+        result['YearofEnrollment'] = row[8]
+        result['CreationDate'] = row[9]
+        result['LastLogin'] = row[10]
+        result['Status'] = row[11]
         return result
 
-    def build_users_attributes(self, UserID, AccountTypeNumber,  FirstName, LastName, Phone, Email, Major):
+    def build_users_attributes(self, UserID, AccountTypeNumber,  FirstName, LastName, Phone, Email, MajorNumber, AboutMe, YearofEnrollment, CreationDate, LastLogin, Status):
         result = {}
         result['UserID'] = UserID
         result['AccountTypeNumber'] = AccountTypeNumber
@@ -23,7 +27,12 @@ class UsersHandler:
         result['LastName'] = LastName
         result['Phone'] = Phone
         result['Email'] = Email
-        result['Major'] = Major
+        result['MajorNumber'] = MajorNumber
+        result['AboutMe'] = AboutMe
+        result['YearofEnrollment'] = YearofEnrollment
+        result['CreationDate'] = CreationDate
+        result['LastLogin'] = LastLogin
+        result['Status'] = Status
         return result
 
     def getAllUsers(self):
@@ -50,11 +59,16 @@ class UsersHandler:
             lastname = json['LastName']
             phone = json['Phone']
             email = json['Email']
-            major = json['Major']
-            if accounttypenumber and firstname and lastname and phone and email and major:
+            majornumber = json['MajorNumber']
+            aboutme = json['AboutMe']
+            yearofenrollment = json['YearofEnrollment']
+            creationdate = json['CreationDate']
+            lastlogin = json['LastLogin']
+            status = json['Status']
+            if accounttypenumber and firstname and lastname and phone and email and majornumber and aboutme and yearofenrollment and creationdate and lastlogin and status:
                 dao = UserDao.UserDAO()
-                userid = dao.insert(accounttypenumber, firstname, lastname, phone, email, major)
-                result = self.build_users_attributes(userid, accounttypenumber, firstname, lastname, phone, email,major)
+                userid = dao.insert(accounttypenumber, firstname, lastname, phone, email, majornumber, aboutme, yearofenrollment, creationdate,lastlogin, status)
+                result = self.build_users_attributes(userid, accounttypenumber, firstname, lastname, phone, email, majornumber, aboutme, yearofenrollment, creationdate,lastlogin, status)
                 return jsonify(Users=result), 201
             else:
                 return jsonify(Error="Unexpected attributes in post request"), 400
@@ -77,9 +91,13 @@ class UsersHandler:
             lastname = json['LastName']
             phone = json['Phone']
             email = json['Email']
-            gender = json['Gender']
+            majornumber = json['MajorNumber']
+            aboutme = json['AboutMe']
+            yearofenrollment = json['YearofEnrollment']
+            creationdate = json['CreationDate']
+            lastlogin = json['LastLogin']
             status = json['Status']
-            if accounttypenumber and firstname and lastname and phone and email and gender and status:
-                dao.update(accounttypenumber, firstname, lastname, phone, email, gender, status)
-                result = self.build_users_attributes(userid, accounttypenumber, firstname, lastname, phone, email, gender, status)
+            if accounttypenumber and firstname and lastname and phone and email and majornumber and aboutme and yearofenrollment and creationdate and lastlogin and status:
+                dao.update(accounttypenumber, firstname, lastname, phone, email, majornumber, aboutme, yearofenrollment, creationdate, lastlogin, status)
+                result = self.build_users_attributes(userid, accounttypenumber, firstname, lastname, phone, email, majornumber, aboutme, yearofenrollment, creationdate, lastlogin, status)
                 return jsonify(Users=result), 200
