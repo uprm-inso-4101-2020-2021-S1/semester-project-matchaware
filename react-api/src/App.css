@@ -1,0 +1,87 @@
+
+.home-picture1{
+    border: 2px solid green; 
+}
+
+.home-picture2{
+  max-width: 70%;
+  border: 2px solid green;
+}
+
+.home-picture3{
+  max-width: 70%;
+  border: 2px solid green;
+}
+
+.App{
+  background-color: rgb(45, 51, 58)
+}
+
+.navBar{
+  background-color: #414443;
+}
+
+.navText{
+  color: green;
+}
+
+.rowstyle{
+  justify-items: center;
+}
+
+.csscard:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.cssimg{
+    width: 300px;
+    height: 200px;
+    margin: 10px 0 0 0px;
+    border: 2px solid green;
+}
+
+.img{
+  max-width: 100%;
+  height:auto;
+}
+
+.csstext{
+  width: 700px;
+  height: 200px;
+  border: 2px solid green;
+  margin: 10px 0 0 0px;
+  float: right;
+  text-align: left;
+  overflow:auto;
+}
+.presentation{
+    line-height: 2;
+    font-size: 30px;
+    color: white;
+
+}
+.dogo{
+    text-align: center;
+}
+
+.moti{
+    display: flex;
+    color: white;
+    align-content: center;
+    line-height: 2;
+    font-size: 25px;
+    border-top-style: solid;
+    border-width: 5px;
+}
+
+.projectPresentation{
+    color: white;
+    border-top-style: solid;
+    border-width: 5px;
+}
+
+.organizationsPresentation{
+    color: white;
+    border-top-style: solid;
+    border-width: 5px;
+}
