@@ -24,6 +24,13 @@ class CredentialDAO:
         result = cursor.fetchone()
         return result
 
+    def getCredentialByUsernameandPassword(self, Username, Password):
+        cursor = self.conn.cursor()
+        query = "select * from Credentials Where username = %s and password = %s;"
+        cursor.execute(query, (Username, Password,))
+        result = cursor.fetchone()
+        return result
+
     def insert(self, username, password, userid, status):
         cursor = self.conn.cursor()
         query = "insert into Credentials(username, password, userid, status) values (%s, %s, %s, %s);"

@@ -19,7 +19,7 @@ export default function Login(props) {
     const handleLogin = () => {
         setError(null)
         setLoading(true)
-        axios.post('http://localhost:4000/users.signin', { username: username.value, password: password.value}).then(response => {
+        axios.post('http://localhost:5000/credentials/logincheck/<string:username>/<string:password>', { username: username.value, password: password.value}).then(response => {
             setLoading(false)
             setUserSession(response.data.token, response.data.user)
             props.history.push('/dashboard')

@@ -80,6 +80,15 @@ def credentials():
             return CredentialHandler().getAllCredentials()
 
 
+@app.route('/credentials/logincheck/<string:username>/<string:password>', methods=['POST'])
+def getCredentialbyUsernameandPassword(username, password):
+    if request.method == 'POST':
+        return CredentialHandler().getCredentialByUsernameandPassword(username, password)
+    else:
+        if not request.args:
+            return CredentialHandler().getAllCredentials()
+
+
 @app.route('/comments', methods=['GET', 'POST'])
 def comments():
     if request.method == 'POST':

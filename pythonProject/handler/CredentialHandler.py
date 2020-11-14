@@ -39,6 +39,15 @@ class CredentialHandler:
             Credential = self.build_credential_dict(row)
             return jsonify(Credential=Credential)
 
+    def getCredentialByUsernameandPassword(self, Username, Password):
+        dao = CredentialDao.CredentialDAO()
+        row = dao.getCredentialByUsernameandPassword(Username, Password)
+        if not row:
+            return jsonify(Error="Credential Not Found"), 404
+        else:
+            Credential = self.build_credential_dict(row)
+            return jsonify(Credential=Credential)
+
     def insertCredentialJson(self, json):
         username = json['UserName']
         password = json['Password']
