@@ -74,7 +74,7 @@ def members():
 def credentials():
     if request.method == 'POST':
         print("REQUEST: ", request.json)
-        return CredentialHandler().insertCredentialJson(request.json)
+        return CredentialHandler().insertCredentialTestJson(request.json)
     else:
         if not request.args:
             return CredentialHandler().getAllCredentials()

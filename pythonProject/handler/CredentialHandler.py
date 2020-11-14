@@ -61,6 +61,19 @@ class CredentialHandler:
         else:
             return jsonify(Error="Unexpected attributes in Credential request"), 400
 
+    def insertCredentialTestJson(self, json):
+        username = json['UserName']
+        password = json['Password']
+        if username and password:
+            userid = 1
+            status = 1
+            dao = CredentialDao.CredentialDAO()
+            credentialid = dao.insert(username, password, userid, status)
+            result = self.build_credential_attributes(credentialid, username, password, userid, status)
+            return jsonify(Credential=result), 201
+        else:
+            return jsonify(Error="Unexpected attributes in Credential request"), 400
+
     def deleteCredential(self, Credentialid):
         dao = CredentialDao.CredentialDAO
         if not dao.getCredentialById(Credentialid):
