@@ -5,7 +5,9 @@ from config import dbconfig
 class CredentialDAO:
     # fix this url crap tonight
     def __init__(self):
-        connection_url = MySQLdb.connect(host="localhost", user='root', passwd='root', db='BeyondHorizonsDB')
+        connection_url = MySQLdb.connect(host='24.54.205.36', user='RemoteMatcha', passwd='RemoteMatcha',
+                                         db='BeyondHorizonsDB', port=6606)
+        ##connection_url = MySQLdb.connect(host="localhost", user='root', passwd='root', db='BeyondHorizonsDB')
         self.conn = connection_url
 
     def getAllCredentials(self):
