@@ -54,34 +54,35 @@
   text-align: left;
   overflow:auto;
 }
+
 .presentation{
     line-height: 2;
-    font-size: 30px;
+    font-size: 45px;
     color: white;
-
-}
-.dogo{
     text-align: center;
 }
-
 .moti{
-    display: flex;
     color: white;
-    align-content: center;
     line-height: 2;
     font-size: 25px;
     border-top-style: solid;
     border-width: 5px;
+    text-indent: 20px;
 }
 
 .projectPresentation{
     color: white;
+    text-align: center;
     border-top-style: solid;
     border-width: 5px;
 }
 
 .organizationsPresentation{
     color: white;
-    border-top-style: solid;
-    border-width: 5px;
+    text-align: center;
 }
+
+.buttonLandingPage{
+  text-align: center;
+}
+
