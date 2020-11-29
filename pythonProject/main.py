@@ -9,6 +9,7 @@ from handler.CommentHandler import CommentsHandler
 from handler.ImagesHandler import ImagesHandler
 from flask_cors import CORS
 
+
 # Activate
 app = Flask(__name__)
 # Apply CORS to this app
