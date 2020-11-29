@@ -3,7 +3,7 @@ from dao import MessagesDao
 
 
 class MessagesHandler:
-
+#testing
     def build_message_dict(self, row):
         result = {}
         result['MessageID'] = row[0]
