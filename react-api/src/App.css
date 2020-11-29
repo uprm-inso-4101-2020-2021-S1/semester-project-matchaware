@@ -57,9 +57,9 @@ overflow:auto;
 
 .presentation{
   line-height: 2;
-  font-size: 30px;
+  font-size: 45px;
   color: white;
-
+  text-align: center;
 }
 .dogo{
   text-align: center;
@@ -88,6 +88,10 @@ overflow:auto;
 
 .loadbutton{
 padding: 100px;
+}
+
+.buttonLandingPage{
+  text-align: center;
 }
 
 .profileImg{
