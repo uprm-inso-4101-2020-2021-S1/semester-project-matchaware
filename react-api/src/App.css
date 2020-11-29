@@ -54,6 +54,7 @@ float: right;
 text-align: left;
 overflow:auto;
 }
+
 .presentation{
   line-height: 2;
   font-size: 30px;
@@ -63,7 +64,6 @@ overflow:auto;
 .dogo{
   text-align: center;
 }
-
 .moti{
   display: flex;
   color: white;

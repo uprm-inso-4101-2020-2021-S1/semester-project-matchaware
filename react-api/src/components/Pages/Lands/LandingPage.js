@@ -7,9 +7,10 @@ import Form from 'react-bootstrap/Form'
 import HotProject from './HotProject'
 import HotOrganizations from './HotOrganizations'
 
+
 function LandingPage() {
     return (
-        <div >
+        <div fluid>
             <Form.Row>
                 <Col>
                     <div class="presentation">
@@ -26,11 +27,12 @@ function LandingPage() {
                             </p>
                         </p>
                     </div>
+                    <div class="buttonLandingPage">
                     <Link to="/signup"><Button variant="dark" active>Joing Now</Button> </Link>
-                    <Button variant="secondary">Learn More</Button>
+                    </div>
                 </Col>
-                <Col>
-                    <div class="dogo"><img src={Doge} className="img"></img></div>
+                <Col class="dogo">
+                    <div><img src={Doge} className="img"></img></div>
                 </Col>
             </Form.Row>
             <div class="moti">
