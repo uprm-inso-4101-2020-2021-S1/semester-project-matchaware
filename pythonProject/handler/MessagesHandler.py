@@ -47,4 +47,59 @@ class MessagesHandler:
             else:
                 return jsonify(Error="Unexpected attributes in post request"), 400
 
+    def getMessagesBetweenUsers(self,json):
+        ReceiverID = json['ReceiverID']
+        SenderID = json['SenderID']
 
+        if (ReceiverID and SenderID):
+            dao = MessagesDao.MessageDao()
+            data = dao.getMessageBetweenUsers(ReceiverID,SenderID)
+            results = []
+            for row in data:
+                results.append(self.build_message_dict(row))
+
+            return jsonify(Results=results), 201
+        else:
+            return jsonify(Error="Unexpected attributes in post request"), 400
+
+    def deleteAllMessagesbetweenUsers(self,json ):
+        ReceiverID = json['ReceiverID']
+        SenderID = json['SenderID']
+
+        if (ReceiverID and SenderID):
+            dao = MessagesDao.MessageDao()
+            status = dao.deleteAllMessageBetweenUsers(ReceiverID, SenderID)
+
+
+            return jsonify(Status= status), 201
+        else:
+            return jsonify(Error="Unexpected attributes in post request"), 400
+
+    def deleteAMessagesbetweenUsers(self, json):
+        ReceiverID = json['ReceiverID']
+        SenderID = json['SenderID']
+        MessageID = json['MessageID']
+
+        if (ReceiverID and SenderID and MessageID):
+            dao = MessagesDao.MessageDao()
+            status = dao.deleteAMessageBetweenUsers(ReceiverID, SenderID,MessageID)
+
+            return jsonify(Status=status), 201
+        else:
+            return jsonify(Error="Unexpected attributes in post request"), 400
+
+    def searchMesagesBetweenUsersKeyword(self,json):
+        ReceiverID = json['ReceiverID']
+        SenderID = json['SenderID']
+        Keyword = json['Keyword']
+
+        if (ReceiverID and SenderID and Keyword):
+            dao = MessagesDao.MessageDao()
+            data = dao.searchInMessages(ReceiverID, SenderID, Keyword)
+            results = []
+            for row in data:
+                results.append(self.build_message_dict(row))
+
+            return jsonify(Results=results), 201
+        else:
+            return jsonify(Error="Unexpected attributes in post request"), 400
