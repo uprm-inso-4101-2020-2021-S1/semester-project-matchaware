@@ -5,7 +5,8 @@ from config import dbconfig
 class ProjectDAO:
     # fix this url crap tonight
     def __init__(self):
-        connection_url = MySQLdb.connect(host="localhost", user='root', passwd='root', db='BeyondHorizonsDB')
+        connection_url = MySQLdb.connect(host='24.54.205.36', user='RemoteMatcha', passwd='RemoteMatcha',
+                                         db='BeyondHorizonsDB', port=6606)
         self.conn = connection_url
 
     def getAllProjects(self):
@@ -24,10 +25,10 @@ class ProjectDAO:
         result = cursor.fetchone()
         return result
 
-    def insert(self, projectname, projectdescription, imagelogo,userid, projecttypenumber, status):
+    def insert(self, projecttitle, projectDescription, projectViewCounter, creationDate,lastUpdate,ProjectType,status):
         cursor = self.conn.cursor()
-        query = "insert into Project( projectname, projectdescription, imagelogo, userid, projecttypenumber, status) values (%s, %s, %s, %s, %s, %s);"
-        cursor.execute(query, (projectname, projectdescription, imagelogo, userid, projecttypenumber, status,))
+        query = "insert into Project(projecttitle, projectDescription, projectViewCounter, creationDate,lastUpdate,ProjectType,status) values (%s, %s, %s, %s, %s, %s,%s);"
+        cursor.execute(query, (projecttitle, projectDescription, projectViewCounter, creationDate,lastUpdate,ProjectType,status,))
         query = "SELECT LAST_INSERT_ID();"
         cursor.execute(query)
         projectid = cursor.fetchall()[0]
@@ -36,14 +37,14 @@ class ProjectDAO:
 
     def delete(self, ProjectID):
         cursor = self.conn.cursor()
-        query = "delete from Project where projectid = %s;"
+        query = "update Project set status = 2 where projectid = %s;"
         cursor.execute(query, (ProjectID,))
         self.conn.commit()
         return ProjectID
 
-    def update(self, projectid, projectname, projectdescription, imagelogo, userid, projecttypenumber, status):
+    def update(self,projectid, Projecttitle,projectdescription,projectviewcounter,creationdate,lastupdate, projecttypenumber, status):
         cursor = self.conn.cursor()
-        query = "update Project set projectname = %s, projectdescription = %s, imagelogo = %s, and userid = %s, projecttypenumber = %s, status where projectid = %s;"
-        cursor.execute(query, (projectname, projectdescription, imagelogo, userid, projecttypenumber, status, projectid,))
+        query = "update Project set projecttitle = %s, projectdescription = %s, projectviewCounter =%s,creationdate = %s, lastupdate=%s ,projecttype =%s,status=%s where projectid = %s;"
+        cursor.execute(query, (Projecttitle,projectdescription,projectviewcounter,creationdate,lastupdate, projecttypenumber, status,))
         self.conn.commit()
         return projectid
