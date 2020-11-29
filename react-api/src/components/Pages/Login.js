@@ -9,17 +9,20 @@ import { setUserSession } from '../../utils/Commons'
 
 
 export default function Login(props) {
-    const username = useFormInput('')
-    const password = useFormInput('')
-    const [error, setError] = useState(null)
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("") 
+    const [error, setError] = useState([])
     const [loading, setLoading] = useState(false)
-
+   
     // handle button click of login form 
     // should be changed in the future
     const handleLogin = () => {
         setError(null)
         setLoading(true)
-        axios.post('/credentials', { username: username.value, password: password.value}).then(response => {
+        axios.post(
+            'https://5fb1b0c987ed490016ea80a8.mockapi.io/test/1/users', 
+            { username: username, password: password})
+        .then(response => {
             setLoading(false)
             setUserSession(response.data.token, response.data.user)
             props.history.push('/dashboard')
@@ -41,16 +44,26 @@ export default function Login(props) {
                 </Card.Title>
                 <Form>
                     <Form.Group
-                        controlId="formEmail"> 
+                        controlId="formEmail" > 
                         <Form.Label>Email Address</Form.Label>
-                        <Form.Control type="email" placeholder="Username or email"/>
+                        <Form.Control 
+                        value={username} 
+                        type="email" 
+                        placeholder="Username or email"
+                        onChange={e => setUsername(e.target.value)}
+                        />
                     </Form.Group>
 
                     <Form.Group>
                         <Form.Label>
                             Password:
                         </Form.Label>
-                        <Form.Control type="password" placeholder="Password123"/> 
+                        <Form.Control 
+                        value={password}
+                        type="password"
+                        placeholder="Password123"
+                        onChange={e => setPassword(e.target.value)}
+                        /> 
                         <Form.Text>
                             Please use an 8 character long password.
                         </Form.Text>
@@ -62,15 +75,4 @@ export default function Login(props) {
             </Card>
         </Container>
     )
-}
-const useFormInput = initialValue => {
-    const [value, setValue] = useState(initialValue)
-
-    const handleChange = e => {
-        setValue(e.target.value)
-    }
-return {
-    value,
-    onChange: handleChange
-}
 }

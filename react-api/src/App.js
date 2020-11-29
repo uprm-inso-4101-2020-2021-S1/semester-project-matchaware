@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { BrowserRouter as Router,Route, Switch} from 'react-router-dom';
 import Header from './components/Header'
-import Profile from './components/Pages/Profile'
+import Profile from './components/Pages/UserProfile'
 import Following from './components/Pages/Following'
 import Messages from './components/Pages/Messages'
 import './App.css'
@@ -25,7 +25,7 @@ import LandingPage from './components/Pages/Lands/LandingPage'
         if (!token){
           return
         }
-    axios.get(`http://localhost:4000/verifyToken?token=${token}`).then(response => {
+    axios.get(`http://localhost:3000/verifyToken?token=${token}`).then(response => {
       setUserSession(response.data.token, response.data.user)
       setAuthLoading(false)
     }).catch(error => {
