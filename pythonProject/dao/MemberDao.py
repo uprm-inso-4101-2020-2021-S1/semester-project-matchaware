@@ -1,12 +1,12 @@
-#import MySQLdb
-import pymysql
+import MySQLdb
 from config import dbconfig
 
 
 class MemberDAO:
     # fix this url crap tonight
     def __init__(self):
-        connection_url = pymysql.connect(host="localhost", user='root', passwd='root', db='BeyondHorizonsDB')
+        connection_url = MySQLdb.connect(host='24.54.205.36', user='RemoteMatcha', passwd='RemoteMatcha',
+                                         db='BeyondHorizonsDB', port=6606)
         self.conn = connection_url
 
     def getAllMembers(self):
@@ -37,7 +37,7 @@ class MemberDAO:
 
     def delete(self, MemberID):
         cursor = self.conn.cursor()
-        query = "delete from Member where memberid = %s;"
+        query = "UPDATE Members SET status=2 WHERE memberid= %s;"
         cursor.execute(query, (MemberID,))
         self.conn.commit()
         return MemberID

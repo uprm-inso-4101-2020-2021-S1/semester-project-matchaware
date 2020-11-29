@@ -1,5 +1,4 @@
-#import MySQLdb
-import pymysql
+import MySQLdb
 from config import dbconfig
 
 
@@ -11,7 +10,8 @@ class CommentDao:
    ##     self.conn = connection_url
 
     def __init__(self):
-        connection_url = pymysql.connect(host="localhost", user='root', passwd='root', db='BeyondHorizonsDB')
+        connection_url = MySQLdb.connect(host='24.54.205.36', user='RemoteMatcha', passwd='RemoteMatcha',
+                                         db='BeyondHorizonsDB', port=6606)
         self.conn = connection_url
 
     def getAllComments(self):
@@ -30,10 +30,10 @@ class CommentDao:
         result = cursor.fetchone()
         return result
 
-    def insert(self, PostID, CommentText, UserID, CommentDate, CommentStatus):
+    def insert(self, CommentText, UserID, CommentDate, CommentStatus):
         cursor = self.conn.cursor()
-        query = "insert into Comments(PostID, CommentText, UserID, CommentDate, CommentStatus) values (%s, %s, %s, %s, %s) ;"
-        cursor.execute(query, (PostID, CommentText, UserID, CommentDate, CommentStatus,))
+        query = "insert into Comments( CommentText, UserID, CommentDate, CommentStatus) values (%s, %s, %s, %s, %s) ;"
+        cursor.execute(query, ( CommentText, UserID, CommentDate, CommentStatus,))
         query = "SELECT LAST_INSERT_ID();"
         cursor.execute(query)
         Commentid = cursor.fetchall()[0]
@@ -42,14 +42,49 @@ class CommentDao:
 
     def delete(self, CommentID):
         cursor = self.conn.cursor()
-        query = "delete from Comments where Commentid = %s;"
+        query = "update Comments set status = 2 where commentid = %s;"
         cursor.execute(query, (CommentID,))
         self.conn.commit()
         return CommentID
 
-    def update(self, CommentID, PostID, CommentText, UserID, CommentDate, CommentStatus):
+    def update(self, CommentID, PostID, CommentText, UserID, CommentDate, Status):
         cursor = self.conn.cursor()
-        query = "update Comments set PostID = %s, CommentText = %s, UserID = %s, CommentDate = %s, CommentStatus = %s where CommentID = %s;"
-        cursor.execute(query, (PostID, CommentText, UserID, CommentDate, CommentStatus, CommentID,))
+        query = "update Comments set  CommentText = %s, UserID = %s, CommentDate = %s, Status = %s where CommentID = %s;"
+        cursor.execute(query, ( CommentText, UserID, CommentDate, Status, CommentID,))
         self.conn.commit()
         return CommentID
+
+    def insertCommentOfComment(self, CommentID, CommentText, UserID, CommentDate, Status):
+        cursor = self.conn.cursor()
+        query = "insert into Comments( CommentText, UserID, CommentDate, Status) values(%s ,%s ,%s , %s);"
+        cursor.execute(query, ( CommentText, UserID, CommentDate, Status, CommentID,))
+        query = "SELECT LAST_INSERT_ID();"
+        cursor.execute(query)
+        Commentid = cursor.fetchall()[0]
+        query = "insert into SubComments(commentid,rootcomment) values(%s,%s);"
+        cursor.execute(query,(Commentid,CommentID,))
+        self.conn.commit()
+        return CommentID
+
+    def getAllCommentsOfPost(self, PostID):
+        cursor = self.conn.cursor()
+        query = "Select CommentID, Commenttext,userid,commentdate, status from Comments inner join PostComments on Comments.commentid = PostComments.commentid where postid = %s;"
+
+        cursor.execute(query, (PostID,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        self.conn.commit()
+        return result
+
+
+    def getCommentsofComments(self, CommentID):
+        cursor = self.conn.cursor()
+        query = "Select CommentID, Commenttext,userid,commentdate, status from Comments inner join SubComments on Comments.commentid = SubComments.commentid where RootComment = %s;"
+
+        cursor.execute(query, (CommentID,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        self.conn.commit()
+        return result
