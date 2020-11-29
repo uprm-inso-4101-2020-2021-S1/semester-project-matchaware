@@ -1,4 +1,5 @@
-import MySQLdb
+#import MySQLdb
+import pymysql
 from config import dbconfig
 
 
@@ -10,7 +11,7 @@ class FollowingDAO:
    ##     self.conn = connection_url
 
     def __init__(self):
-        connection_url = MySQLdb.connect(host="localhost", user='root', passwd='root', db='BeyondHorizonsDB')
+        connection_url = pymysql.connect(host="localhost", user='root', passwd='root', db='BeyondHorizonsDB')
         self.conn = connection_url
 
     def getAllFollowed(self):

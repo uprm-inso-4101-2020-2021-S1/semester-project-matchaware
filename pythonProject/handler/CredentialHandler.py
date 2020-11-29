@@ -62,8 +62,8 @@ class CredentialHandler:
             return jsonify(Error="Unexpected attributes in Credential request"), 400
 
     def insertCredentialTestJson(self, json):
-        username = json['UserName']
-        password = json['Password']
+        username = json['username']
+        password = json['password']
         if username and password:
             userid = 1
             status = 1

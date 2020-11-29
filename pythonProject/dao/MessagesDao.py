@@ -1,10 +1,11 @@
-import MySQLdb
+#import MySQLdb
+import pymysql
 
 
 class MessageDao:
     # fix this url crap tonight
     def __init__(self):
-        connection_url = MySQLdb.connect(host="localhost", user='root', passwd='root', db='BeyondHorizonsDB')
+        connection_url = pymysql.connect(host="localhost", user='root', passwd='root', db='BeyondHorizonsDB')
         self.conn = connection_url
 
     def getAllMessages(self):
