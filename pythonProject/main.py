@@ -21,7 +21,6 @@ def greeting():
     #return app.send_static_file('index.html')
 
 
-
 @app.route('/user', methods=['GET', 'POST'])
 def users():
     if request.method == 'POST':
