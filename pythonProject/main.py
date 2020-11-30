@@ -9,13 +9,11 @@ from handler.CommentHandler import CommentsHandler
 from handler.ImagesHandler import ImagesHandler
 from flask_cors import CORS
 
-
 # Activate
 app = Flask(__name__)
 #app = Flask(__name__, static_folder='../build', static_url_path='/')
 # Apply CORS to this app
 CORS(app)
-
 
 @app.route('/')
 def greeting():
@@ -32,6 +30,48 @@ def users():
     else:
         if not request.args:
             return UsersHandler().getAllUsers()
+
+@app.route('/UserSignUp', methods=['POST'])
+def UserSignUp():
+    if request.method == 'POST':
+        print("REQUEST: ", request.json)
+        return UsersHandler().insertUserSignUpJson(request.json)
+    else:
+        if not request.args:
+            return UsersHandler().getAllUsers()
+
+#For getting user information by ID. Used in the User Home page
+@app.route('/uid/<int:userid>', methods=['GET'])
+def usersByID(userid):
+    if request.method == 'GET':
+            return UsersHandler().getUserById(userid)
+
+@app.route('/credentials', methods=['GET', 'POST'])
+def credentials():
+    if request.method == 'POST':
+        print("REQUEST: ", request.json)
+        return CredentialHandler().insertCredentialLGPageJson(request.json)
+    else:
+        if not request.args:
+            return CredentialHandler().getAllCredentials()
+
+@app.route('/CredSignUp', methods=['POST'])
+def credSignUp():
+    if request.method == 'POST':
+        print("REQUEST: ", request.json)
+        return CredentialHandler().insertCredentialLGPageJson(request.json)
+    else:
+        if not request.args:
+           return "Incorrect argument."
+
+#The Login page check for user. Returns UserID in a json file.
+@app.route('/creds/logcheck', methods=['GET'])
+def getCredentialbyUsernameandPassword(username, password):
+    if request.method == 'POST':
+        return CredentialHandler().getCredentialByUsernameandPassword(username, password)
+    else:
+        if not request.args:
+            return CredentialHandler().getAllCredentials()
 
 
 @app.route('/messages', methods=['GET', 'POST'])
@@ -73,24 +113,6 @@ def members():
         if not request.args:
             return MemberHandler().getAllMembers()
 
-
-@app.route('/credentials', methods=['GET', 'POST'])
-def credentials():
-    if request.method == 'POST':
-        print("REQUEST: ", request.json)
-        return CredentialHandler().insertCredentialTestJson(request.json)
-    else:
-        if not request.args:
-            return CredentialHandler().getAllCredentials()
-
-
-@app.route('/credentials/logincheck/<string:username>/<string:password>', methods=['POST'])
-def getCredentialbyUsernameandPassword(username, password):
-    if request.method == 'POST':
-        return CredentialHandler().getCredentialByUsernameandPassword(username, password)
-    else:
-        if not request.args:
-            return CredentialHandler().getAllCredentials()
 
 
 @app.route('/comments', methods=['GET', 'POST'])
