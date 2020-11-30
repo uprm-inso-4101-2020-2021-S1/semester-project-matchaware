@@ -12,6 +12,7 @@ from flask_cors import CORS
 
 # Activate
 app = Flask(__name__)
+#app = Flask(__name__, static_folder='../build', static_url_path='/')
 # Apply CORS to this app
 CORS(app)
 
@@ -19,6 +20,8 @@ CORS(app)
 @app.route('/')
 def greeting():
     return 'Hello, this is the Matchware App!'
+    #return app.send_static_file('index.html')
+
 
 
 @app.route('/user', methods=['GET', 'POST'])
