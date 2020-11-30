@@ -9,7 +9,7 @@ import { setUserSession } from '../../utils/Commons'
 
 
 export default function Login(props) {
-    const [username, setUsername] = useState("")
+    const [id, setUsername] = useState("")
     const [password, setPassword] = useState("") 
     const [error, setError] = useState([])
     const [loading, setLoading] = useState(false)
@@ -19,12 +19,13 @@ export default function Login(props) {
     const handleLogin = () => {
         setError(null)
         setLoading(true)
-        axios.post(
-            'https://5fb1b0c987ed490016ea80a8.mockapi.io/test/1/users', 
-            { username: username, password: password})
+        axios.get(
+            `https://5fbb344fc09c200016d4042c.mockapi.io/credentials/currentUser/${id}`, 
+            { id:id, password: password})
+            // { username: username, password: password})
         .then(response => {
             setLoading(false)
-            setUserSession(response.data.token, response.data.user)
+            setUserSession(response.data.id, response.data.email)
             props.history.push('/dashboard')
         }).catch(error => {
             setLoading(false)
@@ -47,7 +48,7 @@ export default function Login(props) {
                         controlId="formEmail" > 
                         <Form.Label>Email Address</Form.Label>
                         <Form.Control 
-                        value={username} 
+                        value={id} 
                         type="email" 
                         placeholder="Username or email"
                         onChange={e => setUsername(e.target.value)}

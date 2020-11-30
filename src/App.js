@@ -49,7 +49,7 @@ import LandingPage from './components/Pages/Lands/LandingPage'
               )} /> 
 
               <Switch>
-              <PrivateRoute path="/profile" component={Profile} />
+              <PublicRoute path="/profile" component={Profile} />
               <PrivateRoute path="/following" component={Following} />
               <PrivateRoute path="/messages" component={Messages} />
               <PublicRoute path="/login" component={Login} />
