@@ -25,8 +25,9 @@ import LandingPage from './components/Pages/Lands/LandingPage'
         if (!token){
           return
         }
-    axios.get(`http://localhost:3000/verifyToken?token=${token}`).then(response => {
-      setUserSession(response.data.token, response.data.user)
+      axios.get(`https://5fbb344fc09c200016d4042c.mockapi.io/credentials/currentUser/${token}`).then(response => {
+    // axios.get(`http://localhost:3000/verifyToken?token=${token}`).then(response => {
+      setUserSession(response.data.id, response.data.email)
       setAuthLoading(false)
     }).catch(error => {
       removeUserSession()
@@ -49,7 +50,7 @@ import LandingPage from './components/Pages/Lands/LandingPage'
               )} /> 
 
               <Switch>
-              <PublicRoute path="/profile" component={Profile} />
+              <PrivateRoute path="/profile" component={Profile} />
               <PrivateRoute path="/following" component={Following} />
               <PrivateRoute path="/messages" component={Messages} />
               <PublicRoute path="/login" component={Login} />

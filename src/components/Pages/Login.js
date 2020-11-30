@@ -26,7 +26,7 @@ export default function Login(props) {
         .then(response => {
             setLoading(false)
             setUserSession(response.data.id, response.data.email)
-            props.history.push('/dashboard')
+            props.history.push('/profile')
         }).catch(error => {
             setLoading(false)
             if (error.response && error.response.status === 401) setError(error.response.data.message)

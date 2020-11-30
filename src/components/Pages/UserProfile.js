@@ -21,9 +21,9 @@ function UserProfile() {
         mayor: null,
         interests: null
      })
-    const id = sessionStorage.getUser
+    const id = getToken()
     const [error,setError] = useState([])
-    const url = v
+    const url = `https://5fbb344fc09c200016d4042c.mockapi.io/credentials/currentUser/${id}`
     useEffect(() => {
         axios.get(url).then(response => 
             setUser({
