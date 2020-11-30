@@ -33,6 +33,48 @@ def users():
         if not request.args:
             return UsersHandler().getAllUsers()
 
+@app.route('/UserSignUp', methods=['POST'])
+def UserSignUp():
+    if request.method == 'POST':
+        print("REQUEST: ", request.json)
+        return UsersHandler().insertUserSignUpJson(request.json)
+    else:
+        if not request.args:
+            return UsersHandler().getAllUsers()
+
+#For getting user information by ID. Used in the User Home page
+@app.route('/uid/<int:userid>', methods=['GET'])
+def usersByID(userid):
+    if request.method == 'GET':
+            return UsersHandler().getUserById(userid)
+
+@app.route('/credentials', methods=['GET', 'POST'])
+def credentials():
+    if request.method == 'POST':
+        print("REQUEST: ", request.json)
+        return CredentialHandler().insertCredentialLGPageJson(request.json)
+    else:
+        if not request.args:
+            return CredentialHandler().getAllCredentials()
+
+@app.route('/CredSignUp', methods=['POST'])
+def credSignUp():
+    if request.method == 'POST':
+        print("REQUEST: ", request.json)
+        return CredentialHandler().insertCredentialLGPageJson(request.json)
+    else:
+        if not request.args:
+           return "Incorrect argument."
+
+#The Login page check for user. Returns UserID in a json file.
+@app.route('/creds/logcheck', methods=['GET'])
+def getCredentialbyUsernameandPassword(username, password):
+    if request.method == 'POST':
+        return CredentialHandler().getCredentialByUsernameandPassword(username, password)
+    else:
+        if not request.args:
+            return CredentialHandler().getAllCredentials()
+
 
 @app.route('/messages', methods=['GET', 'POST'])
 def messages():
@@ -72,25 +114,6 @@ def members():
     else:
         if not request.args:
             return MemberHandler().getAllMembers()
-
-
-@app.route('/credentials', methods=['GET', 'POST'])
-def credentials():
-    if request.method == 'POST':
-        print("REQUEST: ", request.json)
-        return CredentialHandler().insertCredentialTestJson(request.json)
-    else:
-        if not request.args:
-            return CredentialHandler().getAllCredentials()
-
-
-@app.route('/credentials/logincheck/<string:username>/<string:password>', methods=['POST'])
-def getCredentialbyUsernameandPassword(username, password):
-    if request.method == 'POST':
-        return CredentialHandler().getCredentialByUsernameandPassword(username, password)
-    else:
-        if not request.args:
-            return CredentialHandler().getAllCredentials()
 
 
 @app.route('/comments', methods=['GET', 'POST'])

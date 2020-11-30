@@ -35,6 +35,11 @@ class UsersHandler:
         result['Status'] = Status
         return result
 
+    def build_usersSignUp_attributes(self, UserID):
+        result = {}
+        result['UserID'] = UserID
+        return result
+
     def getAllUsers(self):
         dao = UserDao.UserDAO()
         users_list = dao.getAllUsers()
@@ -69,6 +74,26 @@ class UsersHandler:
                 dao = UserDao.UserDAO()
                 userid = dao.insert(accounttypenumber, firstname, lastname, phone, email, majornumber, aboutme, yearofenrollment, creationdate,lastlogin, status)
                 result = self.build_users_attributes(userid, accounttypenumber, firstname, lastname, phone, email, majornumber, aboutme, yearofenrollment, creationdate,lastlogin, status)
+                return jsonify(Users=result), 201
+            else:
+                return jsonify(Error="Unexpected attributes in post request"), 400
+
+    def insertUserSignUpJson(self, json):
+            accounttypenumber = 1
+            firstname = json['FirstName']
+            lastname = json['LastName']
+            email = json['Email']
+            if firstname and lastname and email:
+                phone = 0000000000
+                majornumber = 0
+                aboutme = ''
+                yearofenrollment = 0000
+                creationdate = 0000
+                lastlogin = 0000
+                status = 1
+                dao = UserDao.UserDAO()
+                userid = dao.insert(accounttypenumber, firstname, lastname, phone, email, majornumber, aboutme, yearofenrollment, creationdate,lastlogin, status)
+                result = self.build_usersSignUp_attributes(userid)
                 return jsonify(Users=result), 201
             else:
                 return jsonify(Error="Unexpected attributes in post request"), 400

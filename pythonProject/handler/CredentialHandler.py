@@ -61,11 +61,11 @@ class CredentialHandler:
         else:
             return jsonify(Error="Unexpected attributes in Credential request"), 400
 
-    def insertCredentialTestJson(self, json):
+    def insertCredentialLGPageJson(self, json):
         username = json['username']
         password = json['password']
-        if username and password:
-            userid = 1
+        userid = json['userid']
+        if username and password and userid:
             status = 1
             dao = CredentialDao.CredentialDAO()
             credentialid = dao.insert(username, password, userid, status)
