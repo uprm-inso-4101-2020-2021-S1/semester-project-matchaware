@@ -19,10 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="960ab47c-b62b-4e55-8541-a932cf59ceda" name="Default Changelist" comment="prt7. SteelballRun (Da Perfect Spin baby), Mozarella song time.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="960ab47c-b62b-4e55-8541-a932cf59ceda" name="Default Changelist" comment="prt8. 4 Balls, all Slice4Life">
       <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pythonProject/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +99,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606693879455</updated>
-      <workItem from="1606693882372" duration="7606000" />
+      <workItem from="1606693882372" duration="7771000" />
     </task>
     <task id="LOCAL-00001" summary="Merged everything into the Master branch. Hell yeah. &#10;&#10;EJRR">
       <created>1606694436173</created>
@@ -173,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606705652610</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="prt8. 4 Balls, all Slice4Life">
+      <created>1606706168855</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1606706168855</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,7 +206,8 @@
     <MESSAGE value="prt6. yep..." />
     <MESSAGE value="prt6. Stone ocean." />
     <MESSAGE value="prt7. SteelballRun (Da Perfect Spin baby), Mozarella song time." />
-    <option name="LAST_COMMIT_MESSAGE" value="prt7. SteelballRun (Da Perfect Spin baby), Mozarella song time." />
+    <MESSAGE value="prt8. 4 Balls, all Slice4Life" />
+    <option name="LAST_COMMIT_MESSAGE" value="prt8. 4 Balls, all Slice4Life" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1606703366123">
@@ -228,10 +234,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606704210992" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1606705656386">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1606706172670">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1606705656386" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1606706172670" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606701481228">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
