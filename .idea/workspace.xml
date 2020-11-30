@@ -19,10 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="960ab47c-b62b-4e55-8541-a932cf59ceda" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/semester-project-matchaware.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/semester-project-matchaware.iml" afterDir="false" />
+    <list default="true" id="960ab47c-b62b-4e55-8541-a932cf59ceda" name="Default Changelist" comment="Merged everything into the Master branch. Hell yeah. &#10;&#10;EJRR">
+      <change afterPath="$PROJECT_DIR$/pythonProject/dao/OrganizationDao.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pythonProject/dao/StatisticsDao.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pythonProject/handler/OrganizationHandler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pythonProject/handler/StatisticsHandler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pythonProject/dao/MemberDao.py" beforeDir="false" afterPath="$PROJECT_DIR$/pythonProject/dao/MemberDao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pythonProject/dao/MessagesDao.py" beforeDir="false" afterPath="$PROJECT_DIR$/pythonProject/dao/MessagesDao.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,11 +43,15 @@
   </component>
   <component name="JupyterTrust" id="f39fcfa6-140a-46e1-9c28-2f3da864bbbf" />
   <component name="ProjectId" id="1kzC84TChDNgD3UcBAdCfoo6i1H" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -85,8 +93,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606693879455</updated>
-      <workItem from="1606693882372" duration="444000" />
+      <workItem from="1606693882372" duration="4039000" />
     </task>
+    <task id="LOCAL-00001" summary="Merged everything into the Master branch. Hell yeah. &#10;&#10;EJRR">
+      <created>1606694436173</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606694436173</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,10 +119,23 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Merged everything into the Master branch. Hell yeah. &#10;&#10;EJRR" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merged everything into the Master branch. Hell yeah. &#10;&#10;EJRR" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="407" y="174" key="MultipleFileMergeDialog" timestamp="1606694329601">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1606694329601" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1606694440458">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1606694440458" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606701481228">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606701481228" />
   </component>
 </project>
