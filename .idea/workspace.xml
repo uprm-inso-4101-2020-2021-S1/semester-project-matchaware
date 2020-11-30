@@ -19,9 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="960ab47c-b62b-4e55-8541-a932cf59ceda" name="Default Changelist" comment="FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pythonProject/app.py" afterDir="false" />
+    <list default="true" id="960ab47c-b62b-4e55-8541-a932cf59ceda" name="Default Changelist" comment="Renamed main to app. For testing sake.">
+      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +99,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606693879455</updated>
-      <workItem from="1606693882372" duration="8777000" />
+      <workItem from="1606693882372" duration="8796000" />
     </task>
     <task id="LOCAL-00001" summary="Merged everything into the Master branch. Hell yeah. &#10;&#10;EJRR">
       <created>1606694436173</created>
@@ -193,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606706421731</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Renamed main to app. For testing sake.">
+      <created>1606707290214</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1606707290214</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,7 +230,8 @@
     <MESSAGE value="prt8. 4 Balls, all Slice4Life" />
     <MESSAGE value="prt8. 4 Balls, all Slice4Life. Again" />
     <MESSAGE value="FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF" />
-    <option name="LAST_COMMIT_MESSAGE" value="FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF" />
+    <MESSAGE value="Renamed main to app. For testing sake." />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed main to app. For testing sake." />
   </component>
   <component name="WindowStateProjectService">
     <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1606703366123">
