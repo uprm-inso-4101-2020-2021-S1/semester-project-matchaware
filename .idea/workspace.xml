@@ -19,8 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="960ab47c-b62b-4e55-8541-a932cf59ceda" name="Default Changelist" comment="prt8. 4 Balls, all Slice4Life. Again">
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+    <list default="true" id="960ab47c-b62b-4e55-8541-a932cf59ceda" name="Default Changelist" comment="FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pythonProject/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pythonProject/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +64,7 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="semester-project-matchaware" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -76,7 +77,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pythonProject/main.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\argen\PycharmProjects\semester-project-matchaware\pythonProject\app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -87,7 +88,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
+        <item itemvalue="Python.app" />
       </list>
     </recent_temporary>
   </component>
@@ -99,7 +100,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606693879455</updated>
-      <workItem from="1606693882372" duration="7910000" />
+      <workItem from="1606693882372" duration="8777000" />
     </task>
     <task id="LOCAL-00001" summary="Merged everything into the Master branch. Hell yeah. &#10;&#10;EJRR">
       <created>1606694436173</created>
@@ -185,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606706278448</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF">
+      <created>1606706421731</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1606706421731</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,7 +223,8 @@
     <MESSAGE value="prt7. SteelballRun (Da Perfect Spin baby), Mozarella song time." />
     <MESSAGE value="prt8. 4 Balls, all Slice4Life" />
     <MESSAGE value="prt8. 4 Balls, all Slice4Life. Again" />
-    <option name="LAST_COMMIT_MESSAGE" value="prt8. 4 Balls, all Slice4Life. Again" />
+    <MESSAGE value="FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF" />
+    <option name="LAST_COMMIT_MESSAGE" value="FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1606703366123">
@@ -242,10 +251,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606704210992" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1606706281678">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1606706423946">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1606706281678" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1606706423946" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606701481228">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
