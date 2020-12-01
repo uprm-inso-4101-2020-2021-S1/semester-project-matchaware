@@ -27,7 +27,7 @@ export default function HomePage() {
               <Card.Text className="align-bottom">
                 This will be the description of the image or association related to it.
                     </Card.Text>
-              <Button variant="primary">Read More</Button>
+              <Button variant="outline-info">Read More</Button>
             </Card.ImgOverlay>
           </Card>
 
@@ -44,7 +44,7 @@ export default function HomePage() {
               <Card.Text>
                 This will be the description of the image or association related to it.
                     </Card.Text>
-              <Button variant="primary">Read More</Button>
+              <Button variant="outline-info">Read More</Button>
             </Card.ImgOverlay>
           </Card>
           <br />
@@ -58,7 +58,7 @@ export default function HomePage() {
               <Card.Text>
                 This will be the description of the image or association related to it.
                     </Card.Text>
-              <Button variant="primary">Read More</Button>
+              <Button variant="outline-info">Read More</Button>
             </Card.ImgOverlay>
           </Card>
 
@@ -68,19 +68,49 @@ export default function HomePage() {
       <Container className="p-5">
         <Row>
           <Col md={3}>
-                          <div className="cssimg">
-                           <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/skyscrapers.jpg" className="img"></img>
-                          </div>
-                        </Col>
-                        <Col>
-                          <div className="csstext text-white bg-dark">
-                            This is the description of the image.
-                          </div>
-                        </Col>
+            <div className="cssimg">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/skyscrapers.jpg" className="img"></img>
+            </div>
+          </Col>
+          <Col>
+            <div className="csstext text-white bg-dark">
+            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+                <Button variant="outline-info" block>Read More</Button>
+            </div>
+          </Col>
         </Row>
 
+        <Row>
+          <Col md={3}>
+            <div className="cssimg">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/skyscrapers.jpg" className="img"></img>
+            </div>
+          </Col>
+          <Col>
+            <div className="csstext text-white bg-dark">
+            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+                <Button variant="outline-info" block>Read More</Button>
+            </div>
+          </Col>
+        </Row>
 
+        <Row>
+          <Col md={3}>
+            <div className="cssimg">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/skyscrapers.jpg" className="img"></img>
+            </div>
+          </Col>
+          <Col>
+            <div className="csstext text-white bg-dark">
+            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+                <Button variant="outline-info" block>Read More</Button>
+            </div>
+          </Col>
+        </Row>
 
+        <div className="p-5">
+        <Button variant="info" size="lg" className="t-5">Load More</Button>
+        </div>
 
       </Container>
 

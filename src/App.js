@@ -53,6 +53,7 @@ import LandingPage from './components/Pages/Lands/LandingPage'
               <PrivateRoute path="/profile" component={Profile} />
               <PrivateRoute path="/following" component={Following} />
               <PrivateRoute path="/messages" component={Messages} />
+              <PrivateRoute path="/homepage" component={HomePage}/>
               <PublicRoute path="/login" component={Login} />
               <PublicRoute path="/signup" component={SignUp}/>
               </Switch>
