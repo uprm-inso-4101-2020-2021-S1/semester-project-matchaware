@@ -19,7 +19,8 @@ function UserProfile() {
         description: null,
         email: null,
         mayor: null,
-        interests: null
+        interests: null,
+        profilepicture: null
      })
     const id = getToken()
     const [error,setError] = useState([])
@@ -32,7 +33,8 @@ function UserProfile() {
                 description: response.data.description,
                 email: response.data.email,
                 mayor: response.data.mayor,
-                interests: response.data.interests
+                interests: response.data.interests,
+                profilepicture: response.data.profilepicture
             })
         
             ).catch(
@@ -41,7 +43,7 @@ function UserProfile() {
                     else setError("Something went wrong. Please try again later.")
                 }
             )
-    })
+    },[url])
 
 
     return (
@@ -55,7 +57,7 @@ function UserProfile() {
                             <Container className="profileBox">
                                 <Container>
                                     <Card className="profileImg">
-                                            <Card.Img variant="top" src={Doge} />
+                                            <Card.Img variant="top" src={user.profilepicture} />
                                         </Card>
                                             <br/>
                                         <div className="namebox">
@@ -119,7 +121,7 @@ function UserProfile() {
                             </Card>
 
                             <Card className="affiliationCard">
-                                <Card.Img variant="top" src={Doge}/>
+                                <Card.Img variant="top" src={user.profilepicture}/>
                                 <Card.Body>
                                     <Card.Title> Org Name</Card.Title> 
                                     <Card.Text>

@@ -28,7 +28,7 @@ function LandingPage() {
                         </p>
                     </div>
                     <div class="buttonLandingPage">
-                    <Link to="/signup"><Button variant="dark" active>Joing Now</Button> </Link>
+                    <Link to="/signup"><Button variant="dark" active>Join Now</Button> </Link>
                     </div>
                 </Col>
                 <Col class="dogo">
