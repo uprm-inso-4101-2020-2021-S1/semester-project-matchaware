@@ -64,9 +64,18 @@ export default function SignUp() {
 
                     </Form.Row>
 
-                        <Form.Group as={Col}>
-                            <Form.File id="profilepicture" label="Profile Picture:"/>
-                        </Form.Group>
+                    <Form.Group>
+
+
+                        <Form.File
+                            id="profilepicture"
+                            label="Profile Picture"
+                            data-browse="Upload Image"
+                            custom
+                        />
+                    </Form.Group>
+
+
 
 
 
